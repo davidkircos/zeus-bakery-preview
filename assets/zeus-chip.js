@@ -1,12 +1,12 @@
 import * as THREE from './three.module.min.js';
 
 // A modeled, double-sided pita chip: irregular edges, curled dough, baked blisters,
-// a porous surface, and individual salt crystals. No external model requests.
+// and a softly textured baked surface. No external model requests.
 export function mountChip(stage) {
   let renderer;
   try { renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' }); }
   catch { stage.classList.add('chip-unavailable'); return; }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -16,7 +16,9 @@ export function mountChip(stage) {
   stage.classList.add('chip-ready');
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(35, 1, .1, 30);
-  camera.position.set(0, 0, 5.7);
+  // Leave room for the chip's full diagonal, bounce, and hover scale at every angle.
+  camera.position.set(0, 0, 6.8);
+  camera.lookAt(0, .12, 0);
   scene.add(new THREE.HemisphereLight(0xfff5df, 0x9b6231, 2.5));
   const sun = new THREE.DirectionalLight(0xffedce, 3.8);
   sun.position.set(-3, 4, 5); scene.add(sun);
@@ -72,14 +74,9 @@ export function mountChip(stage) {
     const k=(y*size+x)*4;pixels[k]=Math.max(0,222+shade);pixels[k+1]=Math.max(0,165+shade);pixels[k+2]=Math.max(0,81+shade*.65);pixels[k+3]=255;
   }
   const texture=new THREE.DataTexture(pixels,size,size);texture.colorSpace=THREE.SRGBColorSpace;texture.magFilter=THREE.LinearFilter;texture.minFilter=THREE.LinearMipmapLinearFilter;texture.generateMipmaps=true;texture.needsUpdate=true;
-  const material=new THREE.MeshStandardMaterial({map:texture,bumpMap:texture,bumpScale:.028,roughness:.96,metalness:0});
+  texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
+  const material=new THREE.MeshStandardMaterial({map:texture,bumpMap:texture,bumpScale:.012,roughness:1,metalness:0});
   chip.add(new THREE.Mesh(geometry,material));
-  const saltGeometry=new THREE.OctahedronGeometry(.014,0);
-  const saltMaterial=new THREE.MeshStandardMaterial({color:0xfff0d1,roughness:.8});
-  for(let i=0;i<58;i++){
-    const crystal=new THREE.Mesh(saltGeometry,saltMaterial),x=(random()-.5)*1.48,y=(random()-.5)*2.08;
-    crystal.position.set(x,y,surface(x,y)+.05);crystal.rotation.set(random()*3,random()*3,random()*3);crystal.scale.set(.6+random(),.5+random()*.7,.4+random()*.6);chip.add(crystal);
-  }
   chip.rotation.set(-.22,.45,-.32);
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   let visible=false,raf=0,last=0,angle=.45,target=.45,lastScroll=window.scrollY,bounce=0,hovered=false;
@@ -104,7 +101,7 @@ export function mountChip(stage) {
   const resize=new ResizeObserver(()=>{const {width,height}=stage.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();draw();});resize.observe(stage);
   const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)start();else stop();});observer.observe(stage);
   window.addEventListener('scroll',onScroll,{passive:true});document.addEventListener('visibilitychange',onVisibility);reduced.addEventListener('change',onReduced);stage.addEventListener('click',onClick);stage.addEventListener('pointerenter',onEnter);stage.addEventListener('pointerleave',onLeave);
-  function cleanup(){stop();observer.disconnect();resize.disconnect();window.removeEventListener('scroll',onScroll);document.removeEventListener('visibilitychange',onVisibility);reduced.removeEventListener('change',onReduced);stage.removeEventListener('click',onClick);stage.removeEventListener('pointerenter',onEnter);stage.removeEventListener('pointerleave',onLeave);geometry.dispose();material.dispose();texture.dispose();saltGeometry.dispose();saltMaterial.dispose();renderer.dispose();}
+  function cleanup(){stop();observer.disconnect();resize.disconnect();window.removeEventListener('scroll',onScroll);document.removeEventListener('visibilitychange',onVisibility);reduced.removeEventListener('change',onReduced);stage.removeEventListener('click',onClick);stage.removeEventListener('pointerenter',onEnter);stage.removeEventListener('pointerleave',onLeave);geometry.dispose();material.dispose();texture.dispose();renderer.dispose();}
   const unload=event=>{if(event.target.contains(stage)){cleanup();document.removeEventListener('shopify:section:unload',unload);}};
   document.addEventListener('shopify:section:unload',unload);
 }

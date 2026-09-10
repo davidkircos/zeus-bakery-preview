@@ -8,7 +8,7 @@
     const observer = new IntersectionObserver(entries => {
       if (!entries.some(entry => entry.isIntersecting)) return;
       observer.disconnect();
-      import('./zeus-chip.js').then(module => module.mountChip(stage)).catch(() => {
+      import('./zeus-chip.js?v=4').then(module => module.mountChip(stage)).catch(() => {
         stage.classList.add('chip-unavailable');
       });
     }, { rootMargin: '250px' });
