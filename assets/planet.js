@@ -31,7 +31,8 @@ export async function mountPlanet(stage) {
   const geometry = new THREE.SphereGeometry(1, 72, 48);
   const material = new THREE.MeshPhongMaterial({ map: texture, shininess: 8, specular: 0x203957, emissive: 0x102846, emissiveIntensity: .4 });
   const earth = new THREE.Mesh(geometry, material); globe.add(earth);
-  earth.rotation.y = -.25;
+  // Keep North America in view, with the East Coast near the center after the entrance turn.
+  earth.rotation.y = -.55;
   const haloGeometry = new THREE.SphereGeometry(1.025, 64, 40);
   const haloMaterial = new THREE.ShaderMaterial({
     transparent: true, depthWrite: false, side: THREE.BackSide,

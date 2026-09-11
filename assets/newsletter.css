@@ -3,6 +3,7 @@
 .newsletter-intro{grid-column:1;grid-row:2}
 .newsletter-intro h1{font-size:clamp(3.7rem,5.8vw,5.4rem);line-height:1.02;white-space:normal;margin:18px 0 22px}
 .newsletter-intro h1 em:after{display:none}
+.campaign-year{display:table;margin-top:18px;padding:7px 14px;border-radius:999px;background:var(--gold);font-family:var(--sans);font-size:1rem;font-weight:700;line-height:1.2;letter-spacing:.08em}
 .newsletter-lead{font-size:1.125rem;line-height:1.75;max-width:440px;color:#44526a}
 .newsletter-lead strong{font-weight:600;color:var(--ink)}
 .planet-visual{grid-column:1;grid-row:1;justify-self:center;width:260px;max-width:100%;height:230px}

@@ -1,6 +1,6 @@
-# Pita for the Planet
+# Pita for the Planet 2027
 
-The page at `pita-for-the-planet.html` introduces the offer and places the email form in the hero. Both pages link to it through the gold “Pita for the Planet” navigation item. The Earth rendering starts with North America visible, turns briefly on entry, responds to scrolling, and respects reduced-motion preferences. NASA imagery and the existing Three.js runtime are served locally.
+The page at `pita-for-the-planet.html` introduces the offer and places the email form in the hero. Both pages link to it through the gold “Pita for the Planet 2027” navigation item. The Earth rendering starts with North America visible, turns briefly on entry, responds to scrolling, and respects reduced-motion preferences. NASA imagery and the existing Three.js runtime are served locally.
 
 ## Required before merging for launch
 

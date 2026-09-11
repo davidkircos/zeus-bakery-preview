@@ -4,7 +4,7 @@
     const observer = new IntersectionObserver(entries => {
       if (!entries.some(entry => entry.isIntersecting)) return;
       observer.disconnect();
-      import('./planet.js?v=2').then(module => module.mountPlanet(stage)).catch(() => {});
+      import('./planet.js?v=3').then(module => module.mountPlanet(stage)).catch(() => {});
     }, { rootMargin: '150px' });
     observer.observe(stage);
   }
