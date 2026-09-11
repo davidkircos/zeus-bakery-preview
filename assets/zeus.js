@@ -16,4 +16,23 @@
   };
   setupChip();
   document.addEventListener('shopify:section:load', setupChip);
+  const planetForm = document.getElementById('planet-form');
+  if (planetForm) {
+    const email = document.getElementById('planet-email');
+    const error = document.getElementById('planet-error');
+    const success = document.getElementById('planet-success');
+    planetForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!email.value || !email.checkValidity()) {
+        error.hidden = false;
+        email.focus();
+        return;
+      }
+      error.hidden = true;
+      planetForm.hidden = true;
+      success.hidden = false;
+      success.focus?.();
+    });
+    email.addEventListener('input', () => { error.hidden = true; });
+  }
 })();
