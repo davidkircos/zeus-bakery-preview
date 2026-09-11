@@ -1,10 +1,15 @@
 (() => {
   const stage = document.getElementById('planet-stage');
+  let planetReady;
+  const loadPlanet = () => planetReady ||= import('./planet.js?v=4').then(module => module.mountPlanet(stage));
+  const celebrate = () => {
+    if (stage) loadPlanet().then(() => stage.dispatchEvent(new Event('planet-celebrate'))).catch(() => {});
+  };
   if (stage) {
     const observer = new IntersectionObserver(entries => {
       if (!entries.some(entry => entry.isIntersecting)) return;
       observer.disconnect();
-      import('./planet.js?v=3').then(module => module.mountPlanet(stage)).catch(() => {});
+      loadPlanet().catch(() => {});
     }, { rootMargin: '150px' });
     observer.observe(stage);
   }
@@ -26,6 +31,8 @@
       email.focus();
       return;
     }
+    // React to valid input; this animation does not confirm that a subscription was saved.
+    celebrate();
     // A mailing-list provider must be connected before this page accepts signups.
     // Never claim an address was saved when there is no submission destination.
     if (!form.hasAttribute('action')) {

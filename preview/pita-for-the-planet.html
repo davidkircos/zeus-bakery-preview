@@ -10,9 +10,9 @@
   <link rel="icon" href="assets/zeus-logo.webp" type="image/webp">
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="assets/zeus.css?v=7">
-  <link rel="stylesheet" href="assets/newsletter.css?v=3">
+  <link rel="stylesheet" href="assets/newsletter.css?v=4">
   <script src="assets/zeus.js?v=7" defer></script>
-  <script src="assets/newsletter.js?v=3" defer></script>
+  <script src="assets/newsletter.js?v=4" defer></script>
 </head>
 <body class="newsletter-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -24,15 +24,15 @@
   </header>
   <main id="main">
     <section class="newsletter-hero section-wrap" aria-labelledby="hero-heading">
-      <div class="planet-visual" aria-label="Animated view of Earth" role="img"><div id="planet-stage" class="planet-stage"><img src="assets/earth-fallback.jpg" width="700" height="700" alt="" loading="lazy"></div></div>
+      <div class="planet-visual"><button type="button" id="planet-stage" class="planet-stage" aria-label="Spin the globe" disabled><img src="assets/earth-fallback.jpg" width="700" height="700" alt="" loading="lazy"><span class="planet-cheer" aria-hidden="true">😊</span></button></div>
       <div class="newsletter-intro">
         <p class="eyebrow">WE BELIEVE IN CLEAN FOOD AND CLEAN AIR.</p>
         <h1 id="hero-heading">Pita for<br><em>the Planet.</em><span class="campaign-year">2027</span></h1>
-        <p class="newsletter-lead">Give us your email address. We’ll clean <strong>1 kg of CO₂ from the atmosphere in your name</strong> and keep you up to date on our clean food.</p>
+        <p class="newsletter-lead">We’re on a mission to make better, cleaner food and help create a healthier planet.</p>
       </div>
       <div class="signup-card" id="signup">
         <h2 id="signup-heading">Clean 1 kg of CO₂<br><em>in your name.</em></h2>
-        <p class="signup-description">Give us your email. We’ll remove 1 kg of CO₂ from the atmosphere in your name and send you clean food updates.</p>
+        <p class="signup-description">To celebrate our launch, share your email and we’ll remove <strong>1 kg of CO₂ from the atmosphere in your name.</strong> We’ll also keep you up to date on our food and our mission.</p>
         <form id="newsletter-form" class="newsletter-form" method="post" aria-labelledby="signup-heading" novalidate>
           <label for="newsletter-email">Email address</label>
           <input type="email" id="newsletter-email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" required placeholder="you@example.com" aria-describedby="signup-consent signup-error">
@@ -42,6 +42,15 @@
           <noscript><p class="signup-error">Please enable JavaScript to sign up, or contact <a href="mailto:hello@zeusbakery.com">hello@zeusbakery.com</a>.</p></noscript>
         </form>
       </div>
+    </section>
+    <section class="planet-how section-wrap" aria-labelledby="how-heading">
+      <h2 id="how-heading">How it works.</h2>
+      <ol class="planet-steps" role="list">
+        <li><span class="planet-step-number" aria-hidden="true">01</span><h3>Join the list.</h3><p>Get updates on our mission to make better, cleaner food. Each new, confirmed signup adds 1 kg of CO₂ to our removal commitment.</p></li>
+        <li><span class="planet-step-number" aria-hidden="true">02</span><h3>We’ll fund the removal.</h3><p>We’ll combine those commitments and buy independently verified carbon removal through a specialist provider. Zeus Bakery covers the cost.</p></li>
+        <li><span class="planet-step-number" aria-hidden="true">03</span><h3>See the good add up.</h3><p>We’ll share the projects we support, the amount of CO₂ removed, and proof once the removal is completed and verified.</p></li>
+      </ol>
+      <p class="planet-how-note">Our plan for 2027: we’re finalizing our removal partner and delivery schedule. We’ll share both before the campaign launches.</p>
     </section>
     <section class="newsletter-details section-wrap" aria-labelledby="details-heading">
       <div class="section-top"><p class="eyebrow">FROM OUR BAKERY TO YOUR INBOX</p></div>
