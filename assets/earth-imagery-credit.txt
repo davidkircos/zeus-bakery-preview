@@ -1,0 +1,7 @@
+Earth imagery: NASA Earth Observatory.
+Blue Marble Next Generation, August 2004, natural-color land surface.
+Source: https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/
+Texture: https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/august/world.200408.3x5400x2700.jpg
+Fallback (Western Hemisphere): https://science.nasa.gov/earth/earth-observatory/twin-blue-marbles-8108/
+NASA image by Reto Stöckli, based on NASA and NOAA data. The source explicitly encourages free reuse and republication.
+NASA Earth Observatory credit requested. No NASA endorsement is implied.
