@@ -7,7 +7,11 @@
 .newsletter-lead{font-size:1.125rem;line-height:1.75;max-width:440px;color:#44526a}
 .newsletter-lead strong{font-weight:600;color:var(--ink)}
 .planet-visual{grid-column:1;grid-row:1;justify-self:center;width:260px;max-width:100%;height:230px}
-.planet-stage{height:100%;width:100%;position:relative}
+.planet-stage{display:block;height:100%;width:100%;position:relative;appearance:none;border:0;padding:0;background:none;border-radius:50%;touch-action:pan-y;cursor:default}
+.planet-stage.planet-ready{cursor:pointer}
+.planet-stage:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.planet-cheer{position:absolute;right:11%;bottom:16%;font-size:2.5rem;line-height:1;pointer-events:none;opacity:0;transform:scale(.7) rotate(-12deg);transition:opacity .18s,transform .25s}
+.planet-happy .planet-cheer{opacity:1;transform:scale(1) rotate(8deg)}
 .planet-stage canvas{display:block;width:100%;height:100%}
 .planet-stage img{width:100%;height:100%;object-fit:contain;clip-path:circle(46% at 50% 50%)}
 .planet-stage.planet-ready img{display:none}
@@ -26,6 +30,14 @@
 .signup-consent{font-size:.8125rem;line-height:1.65;color:#dce5f4;margin-top:18px}
 .signup-error{font-size:.9375rem;line-height:1.6;color:#ffe0c0;margin-top:16px}
 .signup-error a{color:inherit}
+.planet-how{padding-top:12px;padding-bottom:58px}
+.planet-how h2{font-size:clamp(2.5rem,4vw,3.5rem);line-height:1.1}
+.planet-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin:32px 0 28px;padding:0;list-style:none}
+.planet-steps li{border-top:1px solid var(--line);padding-top:22px}
+.planet-step-number{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;margin-bottom:16px;border-radius:50%;background:var(--gold);font-size:.875rem;font-weight:700}
+.planet-steps h3{font-size:1.125rem;line-height:1.4;margin:0 0 12px}
+.planet-steps p{font-size:1rem;line-height:1.7;color:#44526a}
+.planet-how-note{font-size:.9375rem;line-height:1.7;color:#44526a;max-width:760px}
 .newsletter-details{padding-top:22px;padding-bottom:62px}
 .newsletter-details .section-top{margin-bottom:40px}
 .newsletter-details-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:9%}
@@ -47,10 +59,14 @@
   .newsletter-intro{grid-column:auto;grid-row:auto}
   .newsletter-intro .eyebrow{font-size:.75rem;margin-top:-4px}
   .newsletter-intro h1{font-size:clamp(2.85rem,11vw,4.2rem);margin:15px 0 0}
-  .newsletter-lead{display:none}
+  .newsletter-lead{font-size:1rem;line-height:1.7;margin-top:18px}
   .signup-card{grid-column:auto;grid-row:auto;padding:26px 24px}
   .signup-card h2{font-size:clamp(1.75rem,8vw,2rem)}
   .signup-description{margin-bottom:20px}
+  .planet-how{padding-top:6px;padding-bottom:42px}
+  .planet-steps{grid-template-columns:1fr;gap:22px;margin-top:24px}
+  .planet-steps li{padding-top:20px}
+  .planet-step-number{margin-bottom:12px}
   .newsletter-details{padding-top:0;padding-bottom:38px}
   .newsletter-details .section-top{margin-bottom:28px}
   .newsletter-details-grid{grid-template-columns:minmax(0,1fr);gap:30px}

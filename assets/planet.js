@@ -31,8 +31,8 @@ export async function mountPlanet(stage) {
   const geometry = new THREE.SphereGeometry(1, 72, 48);
   const material = new THREE.MeshPhongMaterial({ map: texture, shininess: 8, specular: 0x203957, emissive: 0x102846, emissiveIntensity: .4 });
   const earth = new THREE.Mesh(geometry, material); globe.add(earth);
-  // Keep North America in view, with the East Coast near the center after the entrance turn.
-  earth.rotation.y = -.55;
+  // Each full turn returns to North America with the East Coast near the center.
+  earth.rotation.y = -.25;
   const haloGeometry = new THREE.SphereGeometry(1.025, 64, 40);
   const haloMaterial = new THREE.ShaderMaterial({
     transparent: true, depthWrite: false, side: THREE.BackSide,
@@ -44,8 +44,9 @@ export async function mountPlanet(stage) {
   stage.appendChild(renderer.domElement); stage.classList.add('planet-ready');
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let visible = false, raf = 0, previous = 0, introTime = reduced.matches ? 3 : 0;
+  let visible = false, raf = 0, previous = 0, happyRemaining = 0, happyTimer = 0;
   let angle = earth.rotation.y, target = angle, lastScroll = window.scrollY;
+  let spinRemaining = reduced.matches ? 0 : Math.PI * 2;
   function draw() { renderer.render(scene, camera); }
   function stop() { cancelAnimationFrame(raf); raf = 0; previous = 0; }
   function tick(now) {
@@ -53,12 +54,20 @@ export async function mountPlanet(stage) {
     if (!stage.isConnected) { cleanup(); return; }
     if (!visible || document.hidden) return;
     const dt = Math.min((now - (previous || now)) / 1000, .05); previous = now;
-    if (!reduced.matches && introTime < 3) {
-      introTime += dt; target += dt * .2 * Math.max(0, 1 - introTime / 3);
+    if (!reduced.matches && spinRemaining > 0) {
+      const step = Math.min(spinRemaining, dt * Math.max(.5, spinRemaining * 2.2));
+      angle += step; target += step; spinRemaining -= step;
+    }
+    if (happyRemaining > 0 && !reduced.matches) {
+      happyRemaining = Math.max(0, happyRemaining - dt);
+      const progress = 1 - happyRemaining / 2.6;
+      globe.position.y = Math.abs(Math.sin(progress * Math.PI * 3)) * .08 * (1 - progress);
+      globe.rotation.z = -.23 + Math.sin(progress * Math.PI * 4) * .06 * (1 - progress);
+      if (!happyRemaining) stage.classList.remove('planet-happy');
     }
     angle += (target - angle) * (1 - Math.exp(-dt * 5));
     earth.rotation.y = angle; draw();
-    if (!reduced.matches && (introTime < 3 || Math.abs(target - angle) > .0005)) raf = requestAnimationFrame(tick);
+    if (!reduced.matches && (happyRemaining > 0 || spinRemaining > 0 || Math.abs(target - angle) > .0005)) raf = requestAnimationFrame(tick);
   }
   function start() { if (!raf && visible && !document.hidden) { previous = 0; raf = requestAnimationFrame(tick); } }
   function onScroll() {
@@ -66,7 +75,27 @@ export async function mountPlanet(stage) {
     if (visible && !reduced.matches) target += Math.max(-.5, Math.min(.5, (current - lastScroll) * .0025));
     lastScroll = current; start();
   }
-  function onMotion() { introTime = 3; target = angle; stop(); draw(); }
+  function onSpin() {
+    if (reduced.matches) {
+      // Offer a new view without a motion effect when reduced motion is preferred.
+      angle += Math.PI / 6; target = angle; earth.rotation.y = angle; draw();
+      return;
+    }
+    // A full turn that slows to a stop; cap rapid clicks at two queued turns.
+    spinRemaining = Math.min(spinRemaining + Math.PI * 2, Math.PI * 4);
+    start();
+  }
+  function onCelebrate() {
+    clearTimeout(happyTimer); stage.classList.add('planet-happy');
+    if (reduced.matches) happyTimer = setTimeout(() => stage.classList.remove('planet-happy'), 2600);
+    else happyRemaining = 2.6;
+    onSpin();
+  }
+  function onMotion() {
+    spinRemaining = 0; happyRemaining = 0; target = angle;
+    clearTimeout(happyTimer); stage.classList.remove('planet-happy');
+    globe.position.y = 0; globe.rotation.z = -.23; stop(); draw();
+  }
   function onVisibility() { if (document.hidden) stop(); else start(); }
   const resize = new ResizeObserver(() => {
     const { width, height } = stage.getBoundingClientRect();
@@ -80,10 +109,14 @@ export async function mountPlanet(stage) {
   window.addEventListener('scroll', onScroll, { passive: true });
   document.addEventListener('visibilitychange', onVisibility);
   reduced.addEventListener('change', onMotion);
+  stage.addEventListener('click', onSpin); stage.disabled = false;
+  stage.addEventListener('planet-celebrate', onCelebrate);
   function cleanup() {
     stop(); resize.disconnect(); observer.disconnect();
     window.removeEventListener('scroll', onScroll); document.removeEventListener('visibilitychange', onVisibility);
     reduced.removeEventListener('change', onMotion);
+    stage.removeEventListener('click', onSpin); stage.disabled = true;
+    stage.removeEventListener('planet-celebrate', onCelebrate); clearTimeout(happyTimer);
     geometry.dispose(); material.dispose(); haloGeometry.dispose(); haloMaterial.dispose(); texture.dispose(); renderer.dispose();
   }
 }
