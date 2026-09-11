@@ -2,11 +2,13 @@
 
 The page at `pita-for-the-planet.html` introduces the mission and launch offer, with the email form in the hero. Both pages link to it through the gold “Pita for the Planet 2027” navigation item. Earth makes one full turn on entry, returns to the East Coast view, and spins on click, tap, Enter, or Space. Valid form submission triggers a brief smile and bounce; it acknowledges the interaction without claiming a subscription was saved. Reduced motion disables the entrance and bounce animations and uses a static change of view for direct activation. NASA imagery and the existing Three.js runtime are served locally.
 
-## Required before merging for launch
+## Publication and signup status
+
+The owner approved merging and publishing this campaign preview. A prominent notice explains that signups are not open and email addresses are not saved. The previous packaging QR URL redirects to the published campaign page so existing test stickers continue to work.
 
 The mailing-list provider has not been selected or connected. The form deliberately has no action and its handler prevents submission; entering a valid email displays an availability message. It never shows a fake subscription success or stores addresses in the browser. Without JavaScript, the submit button stays disabled and an explanatory message is shown.
 
-Connect the owner's approved signup endpoint, including provider-specific field names, consent settings, spam protection, and duplicate handling. Use a real provider response or confirmation page. A frontend success state must only appear after the provider confirms receipt. Do not place secret API keys in these public assets. Verify a test subscriber in the actual list before merging for launch.
+Before enabling email collection, connect the owner's approved signup endpoint, including provider-specific field names, consent settings, spam protection, and duplicate handling. Use a real provider response or confirmation page. A frontend success state must only appear after the provider confirms receipt. Do not place secret API keys in these public assets. Verify a test subscriber in the actual list before opening signups. Remove the preview notice only as part of this verified connection; the current script hides it when a nonempty form action is configured.
 
 The offer (“we’ll remove 1 kg of CO₂ from the atmosphere in your name”) and clean-food updates were explicitly supplied by the owner. The page does not claim removal happens instantly when the form is submitted.
 
@@ -26,7 +28,7 @@ Planning references checked September 11, 2026: [Charm's purchase page](https://
 - HTML routes and local asset references; JavaScript syntax.
 - Desktop, tablet, and mobile layouts, including navigation between both pages.
 - Invalid email handling and a valid-address submission with no provider configured: no request, no success state, no address in the URL.
-- Globe rendering, default North America view, click and keyboard interaction, valid-input celebration, static fallback, and console errors.
+- Globe rendering, default North America view, click and keyboard interaction, valid-input celebration with smile/recycle/seedling emojis, static fallback, and console errors. The submit button also shows the recycle and seedling reaction so it remains visible on mobile.
 - QR code decoded from the final single-sticker PDF and all nine labels on the Letter sheet.
 
 A separate public test URL is used by the temporary packaging sticker. Replace that QR destination with the permanent Zeus Bakery URL before a production print run.

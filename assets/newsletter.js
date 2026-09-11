@@ -1,8 +1,11 @@
 (() => {
+  const form = document.getElementById('newsletter-form');
   const stage = document.getElementById('planet-stage');
-  let planetReady;
+  let planetReady, celebrationTimer;
   const loadPlanet = () => planetReady ||= import('./planet.js?v=4').then(module => module.mountPlanet(stage));
   const celebrate = () => {
+    clearTimeout(celebrationTimer); form.classList.add('is-celebrating');
+    celebrationTimer = setTimeout(() => form.classList.remove('is-celebrating'), 2600);
     if (stage) loadPlanet().then(() => stage.dispatchEvent(new Event('planet-celebrate'))).catch(() => {});
   };
   if (stage) {
@@ -13,10 +16,12 @@
     }, { rootMargin: '150px' });
     observer.observe(stage);
   }
-  const form = document.getElementById('newsletter-form');
   if (!form) return;
   const email = document.getElementById('newsletter-email');
   const error = document.getElementById('signup-error');
+  const connected = Boolean(form.getAttribute('action')?.trim());
+  document.getElementById('signup-availability').hidden = connected;
+  if (connected) email.setAttribute('aria-describedby', 'signup-consent signup-error');
   form.querySelector('button[type=submit]').disabled = false;
 
   form.addEventListener('submit', event => {
@@ -35,7 +40,7 @@
     celebrate();
     // A mailing-list provider must be connected before this page accepts signups.
     // Never claim an address was saved when there is no submission destination.
-    if (!form.hasAttribute('action')) {
+    if (!connected) {
       event.preventDefault();
       error.textContent = 'Signup is not available just yet. Please try again soon.';
       error.hidden = false;
