@@ -10,6 +10,9 @@
   <link rel="icon" href="{{ zeus_logo_url }}" type="image/webp">
   <link rel="stylesheet" href="{{ 'fonts.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'zeus.css' | asset_url }}">
+  {% if request.page_type == 'index' %}
+    {{ 'home.css' | asset_url | stylesheet_tag }}
+  {% endif %}
   <script src="{{ 'zeus.js' | asset_url }}" defer></script>
   {% if template.suffix == 'pita-for-the-planet' %}
     {{ 'newsletter.css' | asset_url | stylesheet_tag }}
