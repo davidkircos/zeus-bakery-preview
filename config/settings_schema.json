@@ -1,0 +1,55 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Zeus Bakery",
+    "theme_version": "2.0.0",
+    "theme_author": "Zeus Bakery",
+    "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes",
+    "theme_support_url": "https://www.zeusbakery.com"
+  },
+  {
+    "name": "Zeus brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Zeus logo"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Contact email",
+        "default": "hello@zeusbakery.com"
+      },
+      {
+        "type": "textarea",
+        "id": "site_description",
+        "label": "Site description",
+        "default": "Greek roots. Colorado heart. Discover Zeus Bakery sourdough pita chips."
+      },
+      {
+        "type": "color",
+        "id": "brand_blue",
+        "label": "Zeus blue",
+        "default": "#193d8c"
+      },
+      {
+        "type": "color",
+        "id": "brand_gold",
+        "label": "Zeus gold",
+        "default": "#efb936"
+      },
+      {
+        "type": "color",
+        "id": "brand_cream",
+        "label": "Cream",
+        "default": "#fff9e9"
+      },
+      {
+        "type": "page",
+        "id": "planet_page",
+        "label": "Pita for the Planet page"
+      }
+    ]
+  }
+]

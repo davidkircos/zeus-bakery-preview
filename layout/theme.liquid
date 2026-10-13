@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>{% assign zeus_logo_url = 'zeus-logo.webp' | asset_url %}{% if settings.logo != blank %}{% assign zeus_logo_url = settings.logo | image_url: width: 360 %}{% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="{{ settings.brand_blue }}">
+  <title>{% if request.page_type == 'index' %}Zeus Bakery · Sourdough Pita Chips{% else %}{{ page_title | escape }} · Zeus Bakery{% endif %}</title>
+  <meta name="description" content="{{ page_description | default: settings.site_description | escape }}">
+  <link rel="icon" href="{{ zeus_logo_url }}" type="image/webp">
+  <link rel="stylesheet" href="{{ 'fonts.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'zeus.css' | asset_url }}">
+  <script src="{{ 'zeus.js' | asset_url }}" defer></script>
+  {% if template.suffix == 'pita-for-the-planet' %}
+    {{ 'newsletter.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'newsletter.js' | asset_url }}" defer></script>
+  {% endif %}
+  {{ 'shopify-theme.css' | asset_url | stylesheet_tag }}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+  {{ content_for_header }}
+  <style>:root{--blue:{{ settings.brand_blue }};--gold:{{ settings.brand_gold }};--cream:{{ settings.brand_cream }}}</style>
+</head>
+<body{% if template.suffix == 'pita-for-the-planet' %} class="newsletter-page"{% endif %}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% section 'zeus-header' %}
+  <main id="main">{{ content_for_layout }}</main>
+  {% section 'zeus-footer' %}
+</body>
+</html>

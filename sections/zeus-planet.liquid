@@ -1,0 +1,80 @@
+
+    <section class="newsletter-hero section-wrap" aria-labelledby="hero-heading">
+      <div class="planet-visual"><button type="button" id="planet-stage" class="planet-stage" aria-label="Spin the globe" disabled><img src="{{ 'earth-fallback.jpg' | asset_url }}" width="700" height="700" alt="" loading="lazy"><span class="planet-cheer" aria-hidden="true">😊</span><span class="planet-cheer planet-cheer-recycle" aria-hidden="true">♻️</span><span class="planet-cheer planet-cheer-sprout" aria-hidden="true">🌱</span></button></div>
+      <div class="newsletter-intro">
+        <p class="eyebrow">{{ section.settings.belief | escape }}</p>
+        <h1 id="hero-heading">Pita for<br><em>the Planet.</em><span class="campaign-year">2027</span></h1>
+        <p class="newsletter-lead">{{ section.settings.mission | escape }}</p>
+      </div>
+      <div class="signup-card campaign-preview" id="signup">
+        <p class="campaign-status">COMING SOON</p>
+        <h2 id="signup-heading">1 kg of CO₂.<br><em>In your name.</em></h2>
+        <div class="signup-description">{{ section.settings.offer }}</div>
+        <ul class="campaign-requirements" aria-label="Both steps will be required">
+          <li><span aria-hidden="true">01</span>Buy Zeus Bakery chips.</li>
+          <li><span aria-hidden="true">02</span>Sign up with your email.</li>
+        </ul>
+        <p class="campaign-preview-note">Both a chip purchase and an email signup will be required. The campaign is not open yet.</p>
+        <a class="text-link campaign-contact" href="{{ routes.root_url }}#contact">Questions? Talk to us ↗</a>
+      </div>
+    </section>
+    <section class="planet-how section-wrap" aria-labelledby="how-heading">
+      <h2 id="how-heading">How it will work.</h2>
+      <ol class="planet-steps" role="list">
+        <li><span class="planet-step-number" aria-hidden="true">01</span><h3>Pick up some chips.</h3><p>Start with a purchase of Zeus Bakery chips when the campaign launches. We’ll share where to buy them and how to take part.</p></li>
+        <li><span class="planet-step-number" aria-hidden="true">02</span><h3>Share your email.</h3><p>Complete your campaign signup with your email address. You’ll hear about our food and the progress of Pita for the Planet.</p></li>
+        <li><span class="planet-step-number" aria-hidden="true">03</span><h3>We’ll fund the removal.</h3><p>Once both steps are complete, we’ll fund 1 kg of independently verified CO₂ removal in your name. We’ll share proof as the removal is completed.</p></li>
+      </ol>
+      <p class="planet-how-note">{{ section.settings.delivery_note | escape }}</p>
+    </section>
+    <section class="newsletter-details section-wrap" aria-labelledby="details-heading">
+      <div class="section-top"><p class="eyebrow">GOOD FOOD. A LITTLE GOOD FOR THE PLANET.</p></div>
+      <div class="newsletter-details-grid">
+        <figure class="newsletter-photo"><img src="{{ 'family-pita-cleaned.jpg' | asset_url }}" width="1086" height="1448" loading="lazy" alt="Fresh Greek pita from the Kircos family bakery"></figure>
+        <div class="newsletter-details-copy">
+          <h2 id="details-heading">Clean food.<br><em>Clean air.</em></h2>
+          <div class="newsletter-benefit"><h3>Food with a family story</h3><p>Our Greek baking tradition inspires everything we make, from fresh pita to sourdough chips worth sharing.</p></div>
+          <div class="newsletter-benefit"><h3>A cleaner future</h3><p>Pita for the Planet will support verified carbon removal, with Zeus Bakery covering the cost. We’ll share our partner, timing, and full campaign details before launch.</p></div>
+          <a class="text-link" href="{{ routes.root_url }}#contact">Get in touch ↗</a>
+        </div>
+      </div>
+    </section>
+    <div class="newsletter-contact section-wrap"><p>Curious about what’s coming? <a href="{{ routes.root_url }}#contact">Say hello.</a></p><p class="imagery-credit">Earth imagery: <a href="https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/" target="_blank" rel="noopener noreferrer">NASA Earth Observatory</a>.</p></div>
+  
+{% schema %}
+{
+  "name": "Pita for the Planet",
+  "settings": [
+    {
+      "type": "text",
+      "id": "belief",
+      "label": "Belief",
+      "default": "WE BELIEVE IN CLEAN FOOD AND CLEAN AIR."
+    },
+    {
+      "type": "textarea",
+      "id": "mission",
+      "label": "Mission",
+      "default": "We’re on a mission to make better, cleaner food and help create a healthier planet."
+    },
+    {
+      "type": "richtext",
+      "id": "offer",
+      "label": "Upcoming campaign offer",
+      "default": "<p>When Pita for the Planet launches, buy our chips and share your email. Complete both steps, and we’ll fund the removal of <strong>1 kg of CO₂ from the atmosphere in your name.</strong></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "delivery_note",
+      "label": "Removal timeline",
+      "default": "Our plan for 2027: we’re finalizing our removal partner and delivery schedule. We’ll share both before the campaign launches."
+    }
+  ],
+  "limit": 1,
+  "presets": [
+    {
+      "name": "Pita for the Planet"
+    }
+  ]
+}
+{% endschema %}

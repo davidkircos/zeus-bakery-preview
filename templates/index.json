@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "hero": {
+      "type": "zeus-hero",
+      "settings": {}
+    },
+    "product": {
+      "type": "zeus-product",
+      "settings": {}
+    },
+    "about": {
+      "type": "zeus-about",
+      "settings": {}
+    },
+    "find": {
+      "type": "zeus-find",
+      "settings": {},
+      "blocks": {
+        "store1": {
+          "type": "stockist",
+          "settings": {
+            "region": "Boulder / Longmont",
+            "name": "Cheese Importers",
+            "address": "103 Main St",
+            "city": "Longmont, CO 80501"
+          }
+        },
+        "store2": {
+          "type": "stockist",
+          "settings": {
+            "region": "Boulder / Longmont",
+            "name": "Niwot Market",
+            "address": "7980 Niwot Rd",
+            "city": "Niwot, CO 80503"
+          }
+        },
+        "store3": {
+          "type": "stockist",
+          "settings": {
+            "region": "Boulder / Longmont",
+            "name": "Lolita’s Market & Deli",
+            "address": "800 Pearl St",
+            "city": "Boulder, CO 80302"
+          }
+        },
+        "store4": {
+          "type": "stockist",
+          "settings": {
+            "region": "Boulder / Longmont",
+            "name": "Lucky’s Market",
+            "address": "3960 Broadway #104",
+            "city": "Boulder, CO 80304"
+          }
+        },
+        "store5": {
+          "type": "stockist",
+          "settings": {
+            "region": "Denver",
+            "name": "Heinie’s Market",
+            "address": "11801 W 44th Ave",
+            "city": "Wheat Ridge, CO 80033"
+          }
+        },
+        "store6": {
+          "type": "stockist",
+          "settings": {
+            "region": "Colorado Springs",
+            "name": "Bread & Butter Neighborhood Market",
+            "address": "602 S Nevada Ave",
+            "city": "Colorado Springs, CO 80903"
+          }
+        }
+      },
+      "block_order": [
+        "store1",
+        "store2",
+        "store3",
+        "store4",
+        "store5",
+        "store6"
+      ]
+    },
+    "contact": {
+      "type": "zeus-contact",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "product",
+    "about",
+    "find",
+    "contact"
+  ]
+}

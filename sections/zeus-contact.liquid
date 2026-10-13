@@ -1,0 +1,77 @@
+{% assign contact_form_id = 'ContactForm-' | append: section.id %}
+<section class="contact-section section-wrap" id="contact" aria-labelledby="contact-heading">
+  <div class="contact-heading-row">
+    <div>
+      <p class="eyebrow">THERE’S ALWAYS ROOM AT OUR TABLE.</p>
+      {% if template.suffix == 'contact' %}
+        <h1 class="contact-title" id="contact-heading">Let’s <em>talk chips.</em></h1>
+      {% else %}
+        <h2 id="contact-heading">Let’s <em>talk chips.</em></h2>
+      {% endif %}
+    </div>
+    <div class="contact-chip">
+      <button type="button" id="chip-stage" class="chip-stage" aria-label="Give the pita chip a spin"><span class="chip-fallback">A divine little crunch.</span></button>
+    </div>
+  </div>
+  <div class="contact-grid contact-form-grid">
+    <div class="contact-intro">
+      <p>{{ section.settings.description | escape }}</p>
+      <div class="contact-details">
+        <p class="eyebrow">PREFER EMAIL?</p>
+        <a class="email-link" href="mailto:{{ settings.contact_email | escape }}">{{ settings.contact_email | escape }} <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="contact-wholesale">Want Zeus on your shelves? Tell us a little about your store in your message.</p>
+    </div>
+    {% form 'contact', id: contact_form_id, class: 'zeus-contact-form' %}
+      {% if form.posted_successfully? %}
+        <div class="contact-success" role="status" tabindex="-1" autofocus>
+          <span class="contact-success-mark" aria-hidden="true">✦</span>
+          <h3>Message received.</h3>
+          <p>Thanks for saying hello! We’ll get back to you by email.</p>
+        </div>
+      {% else %}
+        {% if form.errors %}
+          <div class="contact-form-error" id="{{ contact_form_id }}-errors" role="alert" tabindex="-1" autofocus>
+            <p>We couldn’t send your message. Please check the details below and try again.</p>
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+        <div class="contact-fields">
+          <div class="contact-field">
+            <label for="{{ contact_form_id }}-name">Your name</label>
+            <input type="text" id="{{ contact_form_id }}-name" name="contact[name]" value="{{ form.name | default: customer.name | escape }}" autocomplete="name" maxlength="120" required>
+          </div>
+          <div class="contact-field">
+            <label for="{{ contact_form_id }}-email">Email address</label>
+            <input type="email" id="{{ contact_form_id }}-email" name="contact[email]" value="{{ form.email | default: customer.email | escape }}" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" required{% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="{{ contact_form_id }}-errors"{% endif %}>
+          </div>
+        </div>
+        <div class="contact-field">
+          <label for="{{ contact_form_id }}-message">What’s on your mind?</label>
+          <textarea id="{{ contact_form_id }}-message" name="contact[body]" rows="5" maxlength="5000" required>{{ form.body | escape }}</textarea>
+        </div>
+        <button class="button contact-submit" type="submit">Send message <span aria-hidden="true">↗</span></button>
+        <p class="contact-form-note">We’ll reply by email.{% if shop.privacy_policy != blank %} <a href="{{ shop.privacy_policy.url }}">Privacy policy</a>{% endif %}</p>
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Zeus contact",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Have a question, a favorite pairing, or a shelf with our name on it? We’d love to hear from you."
+    }
+  ],
+  "limit": 1,
+  "presets": [
+    {
+      "name": "Zeus contact"
+    }
+  ]
+}
+{% endschema %}

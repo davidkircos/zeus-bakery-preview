@@ -111,12 +111,17 @@ export async function mountPlanet(stage) {
   reduced.addEventListener('change', onMotion);
   stage.addEventListener('click', onSpin); stage.disabled = false;
   stage.addEventListener('planet-celebrate', onCelebrate);
+  let disposed = false;
   function cleanup() {
+    if (disposed) return;
+    disposed = true;
     stop(); resize.disconnect(); observer.disconnect();
     window.removeEventListener('scroll', onScroll); document.removeEventListener('visibilitychange', onVisibility);
     reduced.removeEventListener('change', onMotion);
     stage.removeEventListener('click', onSpin); stage.disabled = true;
     stage.removeEventListener('planet-celebrate', onCelebrate); clearTimeout(happyTimer);
     geometry.dispose(); material.dispose(); haloGeometry.dispose(); haloMaterial.dispose(); texture.dispose(); renderer.dispose();
+    renderer.domElement.remove(); stage.classList.remove('planet-ready', 'planet-happy');
   }
+  return cleanup;
 }

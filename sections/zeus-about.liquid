@@ -1,0 +1,35 @@
+    <section class="about-section section-wrap" id="about" aria-labelledby="about-heading">
+      <div class="section-top"><p class="eyebrow">A FAMILY RECIPE. A NEW CHAPTER.</p><span class="section-number" aria-hidden="true">02 / OUR STORY</span></div>
+      <div class="about-grid"><figure class="family-photo"><img src="{{ 'family-pita-cleaned.jpg' | asset_url }}" alt="A tall stack of freshly baked Greek pita from the Kircos family bakery" width="1086" height="1448" loading="lazy"><figcaption>Greek pita from our family bakery.</figcaption></figure><div class="about-copy"><h2 id="about-heading">{{ section.settings.heading_first | escape }}<br><em>{{ section.settings.heading_second | escape }}</em></h2>{{ section.settings.story }}<span class="family-signoff">From our family to your table.</span><div class="family-route" aria-label="Our journey: Greece, Detroit, Colorado"><span>GREECE</span><i aria-hidden="true"></i><span>DETROIT</span><i aria-hidden="true"></i><span>COLORADO</span></div></div></div>
+    </section>
+{% schema %}
+{
+  "name": "Zeus family story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_first",
+      "label": "Heading, first line",
+      "default": "Greek roots."
+    },
+    {
+      "type": "text",
+      "id": "heading_second",
+      "label": "Heading, second line",
+      "default": "Colorado heart."
+    },
+    {
+      "type": "richtext",
+      "id": "story",
+      "label": "Family story",
+      "default": "<p>For the Kircos family, bread has always brought people together.</p><p>Our story began in Greece and crossed the ocean to America, where our family built a Detroit bakery known for its soft, flavorful Greek pita.</p><p>Years later, after moving to Colorado, Caroline and David Kircos missed the bread they grew up with. Nothing in the local stores tasted quite like the family recipe. So they started Zeus Bakery.</p><p>Today, we’re bringing that family tradition to a new generation of snacks, baked in Colorado and made to share.</p>"
+    }
+  ],
+  "limit": 1,
+  "presets": [
+    {
+      "name": "Zeus family story"
+    }
+  ]
+}
+{% endschema %}

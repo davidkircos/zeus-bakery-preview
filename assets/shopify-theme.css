@@ -1,0 +1,80 @@
+/* Small adaptations for the native Shopify sections and form states. */
+.editable-copy p{font-size:1rem;line-height:1.8;color:#44526a;margin:0 0 14px}
+.about-copy h2+p{font-family:var(--serif);font-size:1.55rem;line-height:1.4;letter-spacing:-.025em;color:var(--ink);margin-bottom:20px}
+.online-coming-soon{font-size:.875rem;line-height:1.7;color:#44526a;margin-top:20px;max-width:380px}
+.online-coming-soon a{color:var(--ink);font-weight:600;text-underline-offset:4px}
+.newsletter-form input[type=hidden]{display:none}
+.signup-description p{margin:0}
+.signup-success{padding:12px 0 4px;outline:none}
+.signup-success-emoji{display:block;font-size:2rem;letter-spacing:.1em;margin-bottom:14px}
+.signup-success h3{font-family:var(--serif);font-size:2rem;line-height:1.15;margin:0 0 16px}
+.signup-success p{font-size:1rem;line-height:1.7;color:#e2e9f6}
+.signup-consent a{color:inherit;text-underline-offset:3px}
+.signup-error ul{padding-left:18px;margin:0}
+.coming-soon-page{padding-top:70px;padding-bottom:90px}
+.coming-soon-page h1{white-space:normal;font-size:clamp(3rem,6vw,5.8rem)}
+.coming-soon-page>p:not(.eyebrow){max-width:570px;font-size:1.125rem;line-height:1.7;color:#44526a}
+.page-content{padding-top:40px;padding-bottom:70px;overflow-wrap:anywhere}
+.page-content h1,.shopify-policy__title h1{white-space:normal;font-size:clamp(2.6rem,6vw,4.5rem);line-height:1.1}
+.page-content .editable-copy,.shopify-policy__body{font-size:1rem;line-height:1.75}
+.page-content .editable-copy h2,.shopify-policy__body h2{font-size:2rem;line-height:1.2;margin:28px 0 16px}
+.page-content .editable-copy ul,.page-content .editable-copy ol,.shopify-policy__body ul,.shopify-policy__body ol{padding-left:24px}
+.page-content .editable-copy img,.page-content .editable-copy iframe{max-width:100%}
+.page-content a,.shopify-policy__body a{overflow-wrap:anywhere}
+.product-section .product-art{background:transparent;border:0;border-radius:0;overflow:visible;min-height:0;height:auto;gap:16px}
+.product-section .product-art img{width:100%;max-width:490px;height:auto;min-height:0;max-height:620px;object-fit:contain;mix-blend-mode:multiply;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);mask-composite:intersect}
+.product-section .product-art-caption{position:static;max-width:100%;font-size:.6875rem;line-height:1.6;text-align:center}
+.stores-unavailable{position:relative;overflow:hidden;isolation:isolate}
+.store-preview{filter:blur(8px);opacity:.55;user-select:none;pointer-events:none;padding:6px}
+.store-preview-row{display:flex;justify-content:space-between;align-items:center;gap:24px;height:124px;border-bottom:1px solid #6b83b4}
+.store-preview-row>div{flex:1}
+.store-preview-row>div>span{display:block;height:10px;background:#cbd7ed;border-radius:3px;margin:10px 0}
+.store-preview-row .store-preview-region{width:32%;height:7px;background:var(--gold)}
+.store-preview-row .store-preview-name{width:75%;height:16px}
+.store-preview-row .store-preview-address{width:50%}
+.store-preview-row .store-preview-city{width:62%}
+.store-preview-row:nth-child(even) .store-preview-name{width:56%}
+.store-preview-direction{display:grid;place-items:center;width:42px;height:42px;border:1px solid #b0bfdc;border-radius:50%;font-size:1.5rem}
+.stores-coming-soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;background:linear-gradient(transparent,rgba(25,61,140,.88) 25%,rgba(25,61,140,.88) 75%,transparent)}
+.stores-coming-soon-star{color:var(--gold);font-size:2rem;margin-bottom:16px}
+.stores-coming-soon h3{font-family:var(--serif);font-size:clamp(2.7rem,4vw,3.7rem);font-weight:600;font-style:italic;letter-spacing:-.04em;line-height:1.1;margin:0 0 18px}
+.stores-coming-soon p{font-size:1rem;line-height:1.7;color:#e0e6f0}
+.stores-coming-soon .text-link{color:var(--gold);margin-top:24px}
+.site-header nav a.nav-planet{flex-direction:column;gap:3px;line-height:1.3;border-radius:18px}
+.nav-coming-soon{font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.campaign-status{display:inline-block;background:var(--gold);color:var(--ink);padding:7px 12px;border-radius:999px;font-size:.6875rem;line-height:1.4;letter-spacing:.1em;font-weight:700;margin:0 0 24px}
+.campaign-requirements{list-style:none;margin:0;padding:0;border-top:1px solid #6b83b4}
+.campaign-requirements li{display:flex;align-items:center;gap:14px;font-size:1rem;font-weight:600;line-height:1.5;padding:16px 0;border-bottom:1px solid #6b83b4}
+.campaign-requirements li span{color:var(--gold);font-size:.75rem;letter-spacing:.05em}
+.campaign-preview-note{font-size:.875rem;line-height:1.7;color:#e2e9f6;margin-top:22px}
+.campaign-contact{display:inline-block;color:var(--gold);margin-top:22px}
+.campaign-contact:hover{color:var(--cream)}
+@media(max-width:760px){.product-section .product-art img{max-width:420px}.store-preview-row{height:100px}.stores-coming-soon{padding:22px}.site-header nav a.nav-planet{margin-top:3px}}
+.contact-title{font-size:clamp(3rem,5.1vw,5rem);margin:20px 0;white-space:normal}
+.contact-form-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:start;gap:7%;padding-top:36px}
+.contact-intro>p{max-width:390px;font-size:1.0625rem;line-height:1.8;color:#44526a}
+.contact-intro .contact-details{gap:10px;margin-top:30px;max-width:390px}
+.contact-intro .email-link{font-size:clamp(1.25rem,2vw,1.65rem);gap:16px;overflow-wrap:anywhere}
+.contact-intro .email-link span{font-size:1.35rem;flex-shrink:0}
+.contact-intro .contact-wholesale{margin-top:28px;font-size:.9375rem;max-width:350px}
+.zeus-contact-form{min-width:0;padding:30px;background:#fffdf4;border:1px solid var(--line);border-radius:8px}
+.contact-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-field{min-width:0;margin-bottom:22px}
+.contact-field label{display:block;font-size:.875rem;font-weight:600;line-height:1.5;margin-bottom:9px}
+.contact-field input,.contact-field textarea{display:block;width:100%;min-width:0;border:1px solid #9ca8ba;border-radius:4px;background:var(--cream);color:var(--ink);font:inherit;font-size:1rem;line-height:1.5;padding:13px 14px;box-shadow:none}
+.contact-field input{min-height:52px}
+.contact-field textarea{min-height:150px;resize:vertical}
+.contact-field input:focus-visible,.contact-field textarea:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-color:var(--blue)}
+.contact-field [aria-invalid=true]{border-color:#9c3324}
+.contact-submit{cursor:pointer;min-height:56px}
+.contact-form-note{margin-top:16px;font-size:.8125rem;line-height:1.7;color:#44526a}
+.contact-form-note a{margin-left:5px;text-underline-offset:3px}
+.contact-form-error{margin-bottom:24px;padding:16px;border-left:3px solid #9c3324;background:#fff0e9;color:#782c20;font-size:.9375rem;line-height:1.6}
+.contact-form-error ul{margin:10px 0 0;padding-left:20px}
+.contact-success{padding:15px 0;outline:none}
+.contact-success-mark{font-size:2.5rem;color:var(--blue)}
+.contact-success h3{font-family:var(--serif);font-size:2.3rem;letter-spacing:-.04em;line-height:1.15;margin:18px 0 14px}
+.contact-success p{color:#44526a;font-size:1rem;line-height:1.75;max-width:340px}
+@media(min-width:761px) and (max-width:1100px){.contact-fields{grid-template-columns:1fr;gap:0}.zeus-contact-form{padding:24px}.contact-form-grid{gap:5%}}
+@media(max-width:760px){.contact-title{font-size:3.3rem;margin-bottom:0}.contact-form-grid{grid-template-columns:1fr;gap:28px;padding-top:24px}.contact-intro>p{font-size:1rem;max-width:none}.contact-intro .contact-details{margin-top:24px}.contact-intro .contact-wholesale{margin-top:20px;max-width:none}.zeus-contact-form{padding:24px}.contact-fields{grid-template-columns:1fr;gap:0}.contact-submit{width:100%}}
+@media(max-width:760px){.coming-soon-page{padding-top:42px;padding-bottom:60px}.signup-success h3{font-size:1.75rem}}
