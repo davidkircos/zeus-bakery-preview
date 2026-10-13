@@ -1,45 +1,19 @@
-{% assign zeus_product_url = 'zeus-packshot.jpg' | asset_url %}{% if section.settings.image != blank %}{% assign zeus_product_url = section.settings.image | image_url: width: 1200 %}{% endif %}
-    <section class="product-section section-wrap" id="chips" aria-labelledby="product-heading">
-      <div class="section-top"><p class="eyebrow">SLOWLY FERMENTED. PERFECTLY CRUNCHY.</p><span class="section-number" aria-hidden="true">01 / THE CHIPS</span></div>
-      <div class="product-grid">
-        <div class="product-art"><img id="product-image" src="{{ zeus_product_url }}" alt="Aegean Sea Salt sourdough pita chips, 5.7 ounce bag" width="1122" height="1402" loading="lazy"><span class="product-art-caption">GREEK TRADITION. GOLDEN PERFECTION.</span></div>
-        <div class="product-copy"><p class="eyebrow">OUR SIGNATURE FLAVOR</p><h2 id="product-heading">{{ section.settings.name_first | escape }}<br><em>{{ section.settings.name_second | escape }}</em></h2><p class="product-type">{{ section.settings.product_type | escape }}</p><div class="editable-copy">{{ section.settings.description }}</div><div class="product-tags"><span>Vegan</span><span>Seed oil free</span><span>Hand-baked</span></div><a class="button" href="{{ routes.root_url }}#find">Find your next bag <span aria-hidden="true">↗</span></a><p class="online-coming-soon">Online ordering is coming soon. <a href="{{ routes.root_url }}#contact">Get the first word.</a></p><p class="pairing"><span>THE PERFECT PLUS-ONE FOR</span> Hummus, mezze & “just one more.”</p></div>
-      </div>
-    </section>
+<section class="product-section section-wrap" id="chips" aria-labelledby="chips-heading">
+  <div class="section-top"><p class="eyebrow">GOOD THINGS TAKE SOURDOUGH.</p><span class="section-number" aria-hidden="true">01 / THE CHIPS</span></div>
+  <h2 class="visually-hidden" id="chips-heading">Our sourdough pita crisps</h2>
+  <article class="product-grid" aria-labelledby="sea-salt-heading">
+    <div class="product-art"><img src="{{ 'zeus-aegean-sea-salt.webp' | asset_url }}" alt="Aegean Sea Salt sourdough pita crisps, 5.7 ounce (162 gram) bag" width="1122" height="1402" loading="lazy"><span class="product-art-caption">GREEK TRADITION. GOLDEN PERFECTION.</span></div>
+    <div class="product-copy"><p class="eyebrow">OUR SIGNATURE FLAVOR</p><h3 id="sea-salt-heading">Aegean<br><em>Sea Salt.</em></h3><p class="product-type">SOURDOUGH PITA CRISPS · 5.7 OZ (162 G)</p><p>Good sourdough takes time. Ours starts with our 50+ year-old family starter and ferments for 24 hours before we bake it to a golden, satisfying crunch.</p><p>A little tangy. Perfectly salty. Made with heritage Colorado grains, extra virgin olive oil, and sea salt. Ready for your favorite dip—or straight out of the bag.</p><div class="product-tags"><span>Vegan</span><span>Seed oil free</span><span>Hand-baked</span></div><a class="button" href="{{ routes.root_url }}#find">Find Aegean Sea Salt <span aria-hidden="true">↗</span></a><p class="pairing"><span>THE PERFECT PLUS-ONE FOR</span> Hummus, mezze &amp; “just one more.”</p></div>
+  </article>
+  <article class="product-grid product-grid-herbs" aria-labelledby="greek-herbs-heading">
+    <div class="product-art product-art-herbs"><img src="{{ 'zeus-greek-garden-herbs.webp' | asset_url }}" alt="Greek Garden Herbs sourdough pita crisps, 5.7 ounce (162 gram) bag" width="1122" height="1402" loading="lazy"><span class="product-art-caption">A LITTLE GREEK GARDEN IN EVERY BITE.</span></div>
+    <div class="product-copy"><p class="eyebrow">MEET YOUR OTHER FAVORITE</p><h3 id="greek-herbs-heading">Greek<br><em>Garden Herbs.</em></h3><p class="product-type">SOURDOUGH PITA CRISPS · 5.7 OZ (162 G)</p><p>Our family sourdough, with a little more Greek flavor. Heritage Colorado grains, extra virgin olive oil, sea salt, and Greek herbs come together in a crisp with deep sourdough flavor.</p><p>Fermented for 24 hours and hand-baked in Colorado. Bring a bag to the mezze table, pair with your favorite dip, or enjoy every last herby crunch on its own.</p><div class="product-tags"><span>Vegan</span><span>Seed oil free</span><span>Hand-baked</span></div><a class="button" href="{{ routes.root_url }}#find">Find Greek Garden Herbs <span aria-hidden="true">↗</span></a><p class="pairing"><span>THE PERFECT PLUS-ONE FOR</span> Tzatziki, whipped feta &amp; good company.</p></div>
+  </article>
+</section>
 {% schema %}
 {
   "name": "Zeus product spotlight",
-  "settings": [
-    {
-      "type": "text",
-      "id": "name_first",
-      "label": "Flavor, first line",
-      "default": "Aegean"
-    },
-    {
-      "type": "text",
-      "id": "name_second",
-      "label": "Flavor, second line",
-      "default": "Sea Salt."
-    },
-    {
-      "type": "text",
-      "id": "product_type",
-      "label": "Product and size",
-      "default": "SOURDOUGH PITA CHIPS · 5.7 OZ (162 G)"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "Description",
-      "default": "<p>Good sourdough doesn’t happen overnight. Ours starts with a 50+ year old starter and ends with a golden, satisfying crunch.</p><p>A little tangy. Perfectly salty. Made for your favorite dip or snacking straight out of the bag.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Product photo"
-    }
-  ],
+  "settings": [],
   "limit": 1,
   "presets": [
     {

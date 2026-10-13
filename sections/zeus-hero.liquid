@@ -1,47 +1,45 @@
-{% assign zeus_hero_url = 'zeus-hero.jpg' | asset_url %}{% if section.settings.image != blank %}{% assign zeus_hero_url = section.settings.image | image_url: width: 1600 %}{% endif %}
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="little-star" aria-hidden="true">✳</span> MEET YOUR NEW FAVORITE CHIP</p>
-        <h1 id="hero-heading">{{ section.settings.heading_first | escape }}<br>{{ section.settings.heading_second | escape }} <em>{{ section.settings.heading_accent | escape }}</em></h1>
-        <p class="hero-description">{{ section.settings.description | escape }}</p>
-        <div class="hero-actions"><a class="button" href="{{ routes.root_url }}#chips">Meet the chips <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ routes.root_url }}#find">Find Zeus near you</a></div>
-        <div class="hero-note"><span aria-hidden="true">✦</span> Hand-baked in Colorado. Made for sharing.</div>
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="little-star" aria-hidden="true">✳</span> MEET YOUR NEW FAVORITE CHIP</p>
+    <h1 id="hero-heading">{{ section.settings.heading_line | escape }}<br><em>{{ section.settings.heading_accent | escape }}</em></h1>
+    <p class="hero-description">{{ section.settings.description | escape }}</p>
+    <div class="hero-actions"><a class="button" href="{{ routes.root_url }}#chips">Meet the chips <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ routes.root_url }}#find">Find Zeus near you</a></div>
+    <div class="hero-note"><span aria-hidden="true">✦</span> Hand-baked in Colorado. Made for sharing.</div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-packaging">
+      <p class="hero-packaging-kicker">TWO FLAVORS. ONE DIVINE CRUNCH.</p>
+      <div class="hero-packs">
+        <img class="hero-pack hero-pack-salt" src="{{ 'zeus-aegean-sea-salt.webp' | asset_url }}" alt="Zeus Bakery Aegean Sea Salt sourdough pita crisps in the navy, cream, and gold bag" width="1122" height="1402" fetchpriority="high">
+        <img class="hero-pack hero-pack-herbs" src="{{ 'zeus-greek-garden-herbs.webp' | asset_url }}" alt="Zeus Bakery Greek Garden Herbs sourdough pita crisps with the green flavor ribbon" width="1122" height="1402" fetchpriority="high">
       </div>
-      <div class="hero-visual"><img id="hero-image" src="{{ zeus_hero_url }}" alt="Zeus Bakery Aegean Sea Salt sourdough pita chips" width="1536" height="1024" fetchpriority="high"><div class="hero-stamp"><span>ALL HAIL</span><strong>the crunch.</strong></div></div>
-    </section>
-    <div class="qualities" aria-label="Made with a 50 plus year old sourdough starter, vegan, seed oil free, baked in Colorado"><span>50+ YEAR OLD STARTER</span><span aria-hidden="true">✳</span><span>VEGAN</span><span aria-hidden="true">✳</span><span>SEED OIL FREE</span><span aria-hidden="true">✳</span><span>BAKED IN COLORADO</span><span aria-hidden="true">✳</span></div>
+      <p class="hero-packaging-caption">Aegean Sea Salt <span aria-hidden="true">✳</span> Greek Garden Herbs</p>
+    </div>
+    <div class="hero-stamp"><span>ALL HAIL</span><strong>the crunch.</strong></div>
+  </div>
+</section>
+<div class="qualities" aria-label="Made with a 50 plus year old sourdough starter, vegan, seed oil free, baked in Colorado"><span>50+ YEAR OLD STARTER</span><span aria-hidden="true">✳</span><span>VEGAN</span><span aria-hidden="true">✳</span><span>SEED OIL FREE</span><span aria-hidden="true">✳</span><span>BAKED IN COLORADO</span><span aria-hidden="true">✳</span></div>
 {% schema %}
 {
   "name": "Zeus hero",
   "settings": [
     {
       "type": "text",
-      "id": "heading_first",
-      "label": "Heading, first line",
-      "default": "A little Greek."
-    },
-    {
-      "type": "text",
-      "id": "heading_second",
-      "label": "Heading, second line",
-      "default": "A lot of"
+      "id": "heading_line",
+      "label": "Heading line",
+      "default": "The pita chip,"
     },
     {
       "type": "text",
       "id": "heading_accent",
-      "label": "Italic word",
-      "default": "crunch."
+      "label": "Italic line",
+      "default": "done properly."
     },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Real sourdough. A golden bake. A pinch of Aegean sea salt. Meet the pita chip that brings a little more life to the table."
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Hero photo"
+      "default": "Our family has baked Greek pita for generations, and we thought the pita chip deserved better. Ours starts with our 50+ year-old family sourdough starter, heritage Colorado grains, extra virgin olive oil, sea salt, and Greek herbs. The dough ferments for 24 hours, giving a crisp chip with deep sourdough flavor and divine crunch. Pair with your favorite dips, mezze, or finish the whole bag in one go. You've never had a pita chip like this."
     }
   ],
   "limit": 1,
