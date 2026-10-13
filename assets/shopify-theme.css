@@ -61,7 +61,7 @@
 .contact-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .contact-field{min-width:0;margin-bottom:22px}
 .contact-field label{display:block;font-size:.875rem;font-weight:600;line-height:1.5;margin-bottom:9px}
-.contact-field input,.contact-field textarea{display:block;width:100%;min-width:0;border:1px solid #9ca8ba;border-radius:4px;background:var(--cream);color:var(--ink);font:inherit;font-size:1rem;line-height:1.5;padding:13px 14px;box-shadow:none}
+.contact-field input,.contact-field textarea{display:block;width:100%;min-width:0;border:1px solid #9ca8ba;border-radius:4px;background:#fff;color:var(--ink);font:inherit;font-size:1rem;line-height:1.5;padding:13px 14px;box-shadow:none}
 .contact-field input{min-height:52px}
 .contact-field textarea{min-height:150px;resize:vertical}
 .contact-field input:focus-visible,.contact-field textarea:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-color:var(--blue)}
