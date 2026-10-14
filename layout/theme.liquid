@@ -7,7 +7,9 @@
   <meta name="theme-color" content="{{ settings.brand_blue }}">
   <title>{% if request.page_type == 'index' %}Zeus Bakery · Sourdough Pita Chips{% else %}{{ page_title | escape }} · Zeus Bakery{% endif %}</title>
   <meta name="description" content="{{ page_description | default: settings.site_description | escape }}">
-  <link rel="icon" href="{{ zeus_logo_url }}" type="image/webp">
+  <link rel="icon" href="{{ 'favicon.ico' | asset_url }}" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32.png' | asset_url }}">
+  <link rel="apple-touch-icon" href="{{ 'zeus-logo.png' | asset_url }}">
   <link rel="stylesheet" href="{{ 'fonts.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'zeus.css' | asset_url }}">
   {% if request.page_type == 'index' %}
