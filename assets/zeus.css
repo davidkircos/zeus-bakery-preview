@@ -41,3 +41,14 @@
 .site-header nav a.nav-planet[aria-current=page]{border-color:var(--ink)}
 .site-header nav a{white-space:nowrap}
 @media(min-width:761px) and (max-width:900px){.site-header{flex-wrap:wrap;justify-content:center}.site-header nav{width:100%;justify-content:center}}
+.find-inner{grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);grid-template-areas:"lead soon" "follow soon";align-items:center;row-gap:0}
+.find-lead{grid-area:lead}
+.find-follow{grid-area:follow}
+.find-soon{grid-area:soon;justify-self:end;align-self:center;width:min(100%,400px);margin:18px 8px;padding:34px 32px 30px;background:var(--cream);color:var(--ink);border-radius:18px;box-shadow:0 24px 50px rgba(8,20,55,.28);transform:rotate(2.5deg);position:relative}
+.find-soon:before{content:"";position:absolute;inset:10px;border:1.5px solid var(--gold);border-radius:10px;pointer-events:none}
+.find-soon-kicker{display:flex;align-items:center;gap:8px;margin:0 0 16px;font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.find-soon-kicker span{color:var(--gold);font-size:1rem;letter-spacing:0}
+.find-soon-title{margin:0 0 10px;font-family:var(--serif);font-size:clamp(2rem,2.6vw,2.55rem);font-weight:600;font-style:italic;letter-spacing:-.04em;line-height:1.05;color:var(--blue)}
+.find-soon-detail{margin:0;max-width:16em;font-size:1.0625rem;line-height:1.55;color:#3b4b69}
+@media(max-width:760px){.find-inner{grid-template-columns:1fr;grid-template-areas:"lead" "soon" "follow";row-gap:28px}.find-soon{justify-self:stretch;width:100%;margin:0;transform:none}.find-follow .find-mini-brand{margin-top:0}}
+@media(prefers-reduced-motion:reduce){.find-soon{transform:none}}

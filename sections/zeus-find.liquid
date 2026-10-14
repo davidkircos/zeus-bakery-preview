@@ -1,6 +1,6 @@
 {% assign zeus_logo_url = 'zeus-logo.webp' | asset_url %}{% if settings.logo != blank %}{% assign zeus_logo_url = settings.logo | image_url: width: 360 %}{% endif %}
     <section class="find-section" id="find" aria-labelledby="find-heading">
-      <div class="section-wrap find-inner"><div class="find-copy"><p class="eyebrow">FROM OUR BAKERY TO YOUR NEIGHBORHOOD.</p><h2 id="find-heading">Go on.<br><em>Find Zeus.</em></h2><p>{{ section.settings.description | escape }}</p><div class="find-mini-brand"><img src="{{ zeus_logo_url }}" alt="" width="112" height="112" loading="lazy"><span>Local legend.</span></div><a class="find-wholesale" href="{{ routes.root_url }}#contact">Want Zeus on your shelves? Get in touch ↗</a></div></div>
+      <div class="section-wrap find-inner"><div class="find-lead find-copy"><p class="eyebrow">FROM OUR BAKERY TO YOUR NEIGHBORHOOD.</p><h2 id="find-heading">Go on.<br><em>Find Zeus.</em></h2></div><aside class="find-soon"><p class="find-soon-kicker"><span aria-hidden="true">✦</span> Coming soon</p><p class="find-soon-title">Good things are in store.</p><p class="find-soon-detail">{{ section.settings.description | escape }}</p></aside><div class="find-follow"><div class="find-mini-brand"><img src="{{ zeus_logo_url }}" alt="" width="112" height="112" loading="lazy"><span>Local legend.</span></div><a class="find-wholesale" href="{{ routes.root_url }}#contact">Want Zeus on your shelves? Get in touch ↗</a></div></div>
     </section>
 {% schema %}
 {
@@ -10,7 +10,7 @@
       "type": "textarea",
       "id": "description",
       "label": "Intro",
-      "default": "Good things are in store. Coming soon to a local Colorado market near you."
+      "default": "A local Colorado market near you."
     }
   ],
   "limit": 1,
