@@ -1,66 +1,18 @@
 {% assign zeus_logo_url = 'zeus-logo.webp' | asset_url %}{% if settings.logo != blank %}{% assign zeus_logo_url = settings.logo | image_url: width: 360 %}{% endif %}
     <section class="find-section" id="find" aria-labelledby="find-heading">
-      <div class="section-wrap find-inner"><div class="find-copy"><p class="eyebrow">FROM OUR BAKERY TO YOUR NEIGHBORHOOD.</p><h2 id="find-heading">Go on.<br><em>Find Zeus.</em></h2>{% if section.settings.coming_soon %}<p>Your next favorite snack is on its way. We’ll share where to find Zeus soon.</p>{% else %}<p>{{ section.settings.description | escape }}</p><p class="availability-note">Selection varies by store. Give your local market a call to check for pita chips before you go.</p>{% endif %}<div class="find-mini-brand"><img src="{{ zeus_logo_url }}" alt="" width="112" height="112" loading="lazy"><span>Local legend.</span></div><a class="find-wholesale" href="{{ routes.root_url }}#contact">Want Zeus on your shelves? Get in touch ↗</a></div><div class="store-directory"><div class="store-directory-heading"><h3>Our stores</h3><span>COLORADO{% unless section.settings.coming_soon %} · {{ section.blocks.size }} LOCATIONS{% endunless %}</span></div>
-{% if section.settings.coming_soon %}
-  <div class="stores-unavailable">
-    <div class="store-preview" aria-hidden="true" inert>
-      {% for placeholder in (1..4) %}<div class="store-preview-row"><div><span class="store-preview-region"></span><span class="store-preview-name"></span><span class="store-preview-address"></span><span class="store-preview-city"></span></div><span class="store-preview-direction">↗</span></div>{% endfor %}
-    </div>
-    <div class="stores-coming-soon"><span class="stores-coming-soon-star" aria-hidden="true">✦</span><h3>Coming soon.</h3><p>A few good places.<br>Worth the wait.</p><a class="text-link" href="{{ routes.root_url }}#contact">Ask us about availability ↗</a></div>
-  </div>
-{% else %}
-<ul>{% for block in section.blocks %}
-  {% assign map_query = block.settings.name | append: ' ' | append: block.settings.address | append: ' ' | append: block.settings.city %}
-  <li class="store-row" {{ block.shopify_attributes }}><div><span class="store-region">{{ block.settings.region | escape }}</span><h3>{{ block.settings.name | escape }}</h3><p>{{ block.settings.address | escape }}<br>{{ block.settings.city | escape }}</p></div><a class="directions" href="https://www.google.com/maps/search/?api=1&amp;query={{ map_query | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Directions to {{ block.settings.name | escape }}">↗</a></li>
-{% endfor %}</ul>
-{% endif %}</div></div>
+      <div class="section-wrap find-inner"><div class="find-copy"><p class="eyebrow">FROM OUR BAKERY TO YOUR NEIGHBORHOOD.</p><h2 id="find-heading">Go on.<br><em>Find Zeus.</em></h2><p>{{ section.settings.description | escape }}</p><div class="find-mini-brand"><img src="{{ zeus_logo_url }}" alt="" width="112" height="112" loading="lazy"><span>Local legend.</span></div><a class="find-wholesale" href="{{ routes.root_url }}#contact">Want Zeus on your shelves? Get in touch ↗</a></div></div>
     </section>
 {% schema %}
 {
   "name": "Find Zeus",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "coming_soon",
-      "label": "Show coming soon instead of store details",
-      "default": true
-    },
-    {
       "type": "textarea",
       "id": "description",
       "label": "Intro",
-      "default": "Good things are in store. Find Zeus at these independent Colorado markets."
+      "default": "Good things are in store."
     }
   ],
-  "blocks": [
-    {
-      "type": "stockist",
-      "name": "Store",
-      "settings": [
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Store name"
-        },
-        {
-          "type": "text",
-          "id": "region",
-          "label": "Region"
-        },
-        {
-          "type": "text",
-          "id": "address",
-          "label": "Street address"
-        },
-        {
-          "type": "text",
-          "id": "city",
-          "label": "City, state and ZIP"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 30,
   "limit": 1,
   "presets": [
     {
