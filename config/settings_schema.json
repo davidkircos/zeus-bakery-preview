@@ -51,5 +51,24 @@
         "label": "Pita for the Planet page"
       }
     ]
+  },
+  {
+    "name": "Shop",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Pick the products behind the homepage spotlight, the header “Shop now” button, and the cart. If left empty, the theme looks for the handles aegean-sea-salt and greek-garden-herbs. Tag a product coming-soon to show it as coming soon instead of purchasable."
+      },
+      {
+        "type": "product",
+        "id": "product_sea_salt",
+        "label": "Aegean Sea Salt product"
+      },
+      {
+        "type": "product",
+        "id": "product_herbs",
+        "label": "Greek Garden Herbs product"
+      }
+    ]
   }
 ]

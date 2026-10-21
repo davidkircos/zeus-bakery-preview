@@ -1,0 +1,56 @@
+{%- comment -%}
+  Nutrition facts and ingredients for a Zeus flavor.
+  Usage: {% render 'zeus-nutrition', flavor: 'sea-salt' %} or flavor: 'herbs'
+  Source: the printed nutrition labels for each bag (serving size 1 oz / 28 g, about 6 servings per bag).
+{%- endcomment -%}
+{%- if flavor == 'herbs' -%}
+  {%- assign label_name = 'Greek Garden Herbs' -%}
+  {%- assign total_fat = '4.5g' -%}{%- assign total_fat_dv = '6%' -%}
+  {%- assign sodium = '270mg' -%}{%- assign sodium_dv = '12%' -%}
+  {%- assign iron = '0.5mg' -%}{%- assign iron_dv = '2%' -%}
+  {%- assign ingredients = 'Sourdough starter (100% organic wheat and malted barley flour, water), 100% organic wheat &amp; malted barley flour, extra virgin olive oil, 100% organic soft white whole wheat flour, Greek seasoning blend (garlic, lemon peel, salt, Greek oregano, spearmint, black pepper, citric acid), sea salt.' -%}
+{%- else -%}
+  {%- assign label_name = 'Aegean Sea Salt' -%}
+  {%- assign total_fat = '5g' -%}{%- assign total_fat_dv = '6%' -%}
+  {%- assign sodium = '350mg' -%}{%- assign sodium_dv = '15%' -%}
+  {%- assign iron = '0.3mg' -%}{%- assign iron_dv = '2%' -%}
+  {%- assign ingredients = 'Sourdough starter (100% organic wheat and malted barley flour, water), 100% organic wheat &amp; malted barley flour, extra virgin olive oil, 100% organic soft white whole wheat flour, sea salt.' -%}
+{%- endif -%}
+<details class="nutrition"{% if open %} open{% endif %}>
+  <summary><span>Nutrition facts &amp; ingredients</span><span class="nutrition-toggle" aria-hidden="true">+</span></summary>
+  <div class="nutrition-panel">
+    <div class="nutrition-facts" aria-label="Nutrition facts for {{ label_name }} sourdough pita crisps">
+      <p class="nutrition-title">Nutrition Facts</p>
+      <p class="nutrition-servings">About 6 servings per container</p>
+      <p class="nutrition-serving-size"><span>Serving size</span><span>1 oz (28g)</span></p>
+      <p class="nutrition-calories"><span><small>Amount per serving</small>Calories</span><span>120</span></p>
+      <p class="nutrition-dv-head">% Daily Value*</p>
+      <table>
+        <tbody>
+          <tr><th scope="row"><b>Total Fat</b> {{ total_fat }}</th><td><b>{{ total_fat_dv }}</b></td></tr>
+          <tr class="nutrition-sub"><th scope="row">Saturated Fat 0.5g</th><td><b>3%</b></td></tr>
+          <tr class="nutrition-sub"><th scope="row"><i>Trans</i> Fat 0g</th><td></td></tr>
+          <tr><th scope="row"><b>Cholesterol</b> 0mg</th><td><b>0%</b></td></tr>
+          <tr><th scope="row"><b>Sodium</b> {{ sodium }}</th><td><b>{{ sodium_dv }}</b></td></tr>
+          <tr><th scope="row"><b>Total Carbohydrate</b> 16g</th><td><b>6%</b></td></tr>
+          <tr class="nutrition-sub"><th scope="row">Dietary Fiber 0g</th><td><b>0%</b></td></tr>
+          <tr class="nutrition-sub"><th scope="row">Total Sugars 0g</th><td></td></tr>
+          <tr class="nutrition-sub nutrition-sub2"><th scope="row">Includes 0g Added Sugars</th><td><b>0%</b></td></tr>
+          <tr class="nutrition-rule"><th scope="row"><b>Protein</b> 3g</th><td></td></tr>
+        </tbody>
+        <tbody class="nutrition-micros">
+          <tr><th scope="row">Vitamin D 0mcg</th><td>0%</td></tr>
+          <tr><th scope="row">Calcium 0mg</th><td>0%</td></tr>
+          <tr><th scope="row">Iron {{ iron }}</th><td>{{ iron_dv }}</td></tr>
+          <tr><th scope="row">Potassium 20mg</th><td>0%</td></tr>
+        </tbody>
+      </table>
+      <p class="nutrition-footnote">* The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.</p>
+    </div>
+    <div class="nutrition-ingredients">
+      <p><b>Ingredients:</b> {{ ingredients }}</p>
+      <p><b>Contains:</b> Wheat.</p>
+      <p class="nutrition-bag">5.7 oz (162 g) per bag.</p>
+    </div>
+  </div>
+</details>

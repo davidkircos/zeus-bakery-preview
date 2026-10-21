@@ -1,10 +1,12 @@
 {% assign planet_url = settings.planet_page.url | default: '/pages/pita-for-the-planet' %}
 {% assign zeus_logo_url = 'zeus-logo.webp' | asset_url %}{% if settings.logo != blank %}{% assign zeus_logo_url = settings.logo | image_url: width: 360 %}{% endif %}
+{% assign shop_product = settings.product_sea_salt | default: all_products['aegean-sea-salt'] %}
+{% assign shop_url = routes.root_url | append: '#chips' %}{% if shop_product != blank and shop_product.available %}{% assign shop_url = shop_product.url %}{% endif %}
   <div class="announcement">{{ section.settings.announcement | escape }}</div>
   <header class="site-header">
     <a class="brand" href="{{ routes.root_url }}" aria-label="Zeus Bakery home"><img src="{{ zeus_logo_url }}" width="74" height="74" alt=""><span>ZEUS<span class="brand-small">BAKERY</span></span></a>
-    <nav aria-label="Main navigation"><a href="{{ routes.root_url }}#chips">Our chips</a><a href="{{ routes.root_url }}#about">Our story</a><a href="{{ routes.root_url }}#find">Find Zeus</a><a href="{{ routes.root_url }}#contact">Contact us</a><a class="nav-planet" href="{{ planet_url }}"{% if template.suffix == 'pita-for-the-planet' %} aria-current="page"{% endif %}><span>Pita for the Planet 2027</span><span class="nav-coming-soon">Coming soon</span></a></nav>
-    <a class="button button-small header-cta" href="{% if template.suffix == 'pita-for-the-planet' %}{{ routes.root_url }}#contact{% else %}{{ routes.root_url }}#find{% endif %}">{% if template.suffix == 'pita-for-the-planet' %}Contact us{% else %}Find your crunch{% endif %} <span aria-hidden="true">↗</span></a>
+    <nav aria-label="Main navigation"><a href="{{ routes.root_url }}#chips">Our chips</a><a href="{{ routes.root_url }}#about">Our story</a><a href="{{ routes.root_url }}#find">Find Zeus</a><a href="{{ routes.root_url }}#contact">Contact us</a><a class="nav-planet" href="{{ planet_url }}"{% if template.suffix == 'pita-for-the-planet' %} aria-current="page"{% endif %}><span>Pita for the Planet 2027</span><span class="nav-coming-soon">Coming soon</span></a><a class="nav-cart" href="{{ routes.cart_url }}"{% if template.name == 'cart' %} aria-current="page"{% endif %}>Cart{% if cart.item_count > 0 %} <span class="nav-cart-count" aria-label="{{ cart.item_count }} items">{{ cart.item_count }}</span>{% endif %}</a></nav>
+    <a class="button button-small header-cta" href="{% if template.suffix == 'pita-for-the-planet' %}{{ routes.root_url }}#contact{% else %}{{ shop_url }}{% endif %}">{% if template.suffix == 'pita-for-the-planet' %}Contact us{% elsif shop_product != blank and shop_product.available %}Shop now{% else %}Find your crunch{% endif %} <span aria-hidden="true">↗</span></a>
   </header>
 {% schema %}
 {

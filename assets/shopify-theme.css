@@ -78,3 +78,7 @@
 @media(min-width:761px) and (max-width:1100px){.contact-fields{grid-template-columns:1fr;gap:0}.zeus-contact-form{padding:24px}.contact-form-grid{gap:5%}}
 @media(max-width:760px){.contact-title{font-size:3.3rem;margin-bottom:0}.contact-form-grid{grid-template-columns:1fr;gap:28px;padding-top:24px}.contact-intro>p{font-size:1rem;max-width:none}.contact-intro .contact-details{margin-top:24px}.contact-intro .contact-wholesale{margin-top:20px;max-width:none}.zeus-contact-form{padding:24px}.contact-fields{grid-template-columns:1fr;gap:0}.contact-submit{width:100%}}
 @media(max-width:760px){.coming-soon-page{padding-top:42px;padding-bottom:60px}.signup-success h3{font-size:1.75rem}}
+.site-header nav a.nav-cart{display:inline-flex;align-items:center;gap:6px}
+.nav-cart-count{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--blue);color:var(--cream);font-size:.6875rem;font-weight:700;line-height:1}
+.product-section .nutrition{margin-top:28px}
+.product-copy .product-cta{margin-bottom:0}

@@ -21,6 +21,18 @@
     <script src="{{ 'newsletter.js' | asset_url }}" defer></script>
   {% endif %}
   {{ 'shopify-theme.css' | asset_url | stylesheet_tag }}
+  {% if template.name == 'product' or template.name == 'cart' or template.name == 'collection' %}
+    {{ 'shop.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+  {% if template.name == 'product' %}
+    <script src="{{ 'shop.js' | asset_url }}" defer></script>
+  {% endif %}
+  {% if template.name == 'product' or template.name == 'cart' or template.name == 'collection' %}
+    {{ 'shop.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+  {% if template.name == 'product' %}
+    <script src="{{ 'shop.js' | asset_url }}" defer></script>
+  {% endif %}
 
   <link rel="canonical" href="{{ canonical_url }}">
   {{ content_for_header }}

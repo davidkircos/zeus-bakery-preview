@@ -1,6 +1,7 @@
+{%- assign sea_salt = settings.product_sea_salt | default: all_products['aegean-sea-salt'] -%}
 <section class="section-wrap coming-soon-page">
-  <p class="eyebrow">GOOD THINGS ARE ON THE WAY.</p>
-  <h1>Online ordering.<br><em>Coming soon.</em></h1>
-  <p>We’re getting ready to share our chips with you. Store locations and online ordering are coming soon. Get in touch with any questions.</p>
-  <div class="hero-actions"><a class="button" href="{{ routes.root_url }}#find">Find Zeus near you <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ routes.root_url }}#contact">Contact us</a></div>
+  <p class="eyebrow">LOOKING FOR CHIPS?</p>
+  <h1>You’re in the<br><em>right place.</em></h1>
+  <p>Aegean Sea Salt is available to order now in boxes of 6, 12 or 18 bags. Greek Garden Herbs is coming soon.</p>
+  <div class="hero-actions">{% if sea_salt != blank and sea_salt.available %}<a class="button" href="{{ sea_salt.url }}">Shop Aegean Sea Salt <span aria-hidden="true">↗</span></a>{% else %}<a class="button" href="{{ routes.root_url }}#chips">Meet the chips <span aria-hidden="true">↗</span></a>{% endif %}<a class="text-link" href="{{ routes.root_url }}#contact">Contact us</a></div>
 </section>
