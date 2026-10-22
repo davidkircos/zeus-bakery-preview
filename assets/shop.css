@@ -22,21 +22,25 @@
 .buy-options{margin:0 0 26px;padding:0;border:0;min-width:0}
 .buy-options legend{display:flex;align-items:center;gap:12px;padding:0;margin-bottom:14px;font-family:var(--serif);font-size:1.4rem;font-weight:600;letter-spacing:-.03em;line-height:1.2}
 .buy-step{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--ink);font-family:var(--sans);font-size:.8125rem;font-weight:700;letter-spacing:0}
-.buy-options{display:grid;gap:10px}
+.buy-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .buy-options legend+.buy-option{margin-top:0}
-.buy-option{position:relative;display:block;cursor:pointer}
+.buy-option{position:relative;display:flex;cursor:pointer;min-width:0}
 .buy-option input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
-.buy-option-body{display:grid;grid-template-columns:1fr auto;grid-template-areas:"title price" "meta meta";column-gap:16px;row-gap:2px;padding:16px 18px;border:1.5px solid #cfd3c6;border-radius:8px;background:#fffdf6;transition:border-color .15s,box-shadow .15s,transform .15s}
-.buy-option-title{grid-area:title;font-weight:700;font-size:1rem;line-height:1.3;color:var(--ink)}
-.buy-option-price{grid-area:price;font-family:var(--serif);font-size:1.25rem;font-weight:600;letter-spacing:-.03em;line-height:1.1;color:var(--ink)}
-.buy-option-meta{grid-area:meta;font-size:.8125rem;line-height:1.5;color:#5b6a86}
+.buy-option-body{flex:1;display:flex;flex-direction:column;gap:3px;min-width:0;padding:18px 16px 16px;border:1.5px solid #cfd3c6;border-radius:8px;background:#fffdf6;transition:border-color .15s,box-shadow .15s,transform .15s}
+.buy-option-title{font-weight:700;font-size:1rem;line-height:1.3;color:var(--ink)}
+.buy-option-price{font-family:var(--serif);font-size:1.5rem;margin:4px 0 2px;font-weight:600;letter-spacing:-.03em;line-height:1.1;color:var(--ink)}
+.buy-option-meta{display:flex;flex-direction:column;align-items:flex-start;gap:7px;font-size:.8125rem;line-height:1.5;color:#5b6a86}
 .buy-save{display:inline-block;margin-left:8px;padding:3px 8px;border-radius:999px;background:var(--gold);color:var(--ink);font-size:.6875rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;line-height:1.4}
 .buy-option:hover .buy-option-body{border-color:#8fa0c4}
 .buy-option input:checked+.buy-option-body{border-color:var(--blue);box-shadow:inset 0 0 0 1.5px var(--blue);background:#fff}
 .buy-option input:focus-visible+.buy-option-body{outline:2px solid var(--blue);outline-offset:3px}
 .buy-option.is-unavailable{cursor:not-allowed}
 .buy-option.is-unavailable .buy-option-body{opacity:.5;background:transparent}
-.buy-plans .buy-option-body{grid-template-areas:"title title" "meta meta"}
+.buy-option-meta .buy-save{margin-left:0}
+.buy-plans{grid-template-columns:repeat(2,minmax(0,1fr))}
+.buy-plans .buy-option-body{padding:16px 16px 15px}
+.buy-plans .buy-option-title{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.buy-plans .buy-option-title .buy-save{margin-left:0}
 .buy-summary{padding:26px 0 0;border-top:1px solid var(--line)}
 .buy-price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .buy-price-now{font-family:var(--serif);font-size:2.6rem;font-weight:600;letter-spacing:-.05em;line-height:1;color:var(--ink)}
@@ -90,7 +94,7 @@
 .cart-summary-actions .button{cursor:pointer;min-height:58px;justify-content:center}
 .cart-continue{grid-column:2;justify-self:start;font-size:.875rem}
 @media(max-width:1000px){.buy-grid{grid-template-columns:1fr;gap:40px}.buy-art{position:static}.buy-art img{max-width:420px;max-height:520px}}
-@media(max-width:760px){.buy-page{padding-top:22px;padding-bottom:60px}.buy-breadcrumb{margin-bottom:22px}.buy-art{padding:22px 16px 26px}.buy-title{font-size:clamp(2.8rem,11vw,3.8rem)}.buy-price-now{font-size:2.2rem}.buy-actions .button{flex-basis:100%}.buy-details{margin-top:40px}.buy-details .nutrition-panel{grid-template-columns:1fr;gap:20px}.cart-page{padding-top:34px;padding-bottom:60px}.cart-line{grid-template-columns:84px minmax(0,1fr);grid-template-areas:"art copy" "qty total";gap:16px 18px}.cart-line-art{grid-area:art}.cart-line-art img{height:92px}.cart-line-copy{grid-area:copy}.cart-line-qty{grid-area:qty;max-width:110px}.cart-line-total{grid-area:total;align-self:end}.cart-summary{grid-template-columns:1fr;justify-content:stretch}.cart-summary-rows,.cart-summary-note,.cart-summary-actions,.cart-continue{grid-column:1}}
+@media(max-width:760px){.buy-options{gap:8px}.buy-option-body{padding:14px 12px 12px}.buy-option-title{font-size:.9375rem}.buy-option-price{font-size:1.25rem}.buy-option-meta{font-size:.75rem;gap:6px}.buy-plans{grid-template-columns:1fr}.buy-plans .buy-option-body{padding:14px 14px 13px}.buy-page{padding-top:22px;padding-bottom:60px}.buy-breadcrumb{margin-bottom:22px}.buy-art{padding:22px 16px 26px}.buy-title{font-size:clamp(2.8rem,11vw,3.8rem)}.buy-price-now{font-size:2.2rem}.buy-actions .button{flex-basis:100%}.buy-details{margin-top:40px}.buy-details .nutrition-panel{grid-template-columns:1fr;gap:20px}.cart-page{padding-top:34px;padding-bottom:60px}.cart-line{grid-template-columns:84px minmax(0,1fr);grid-template-areas:"art copy" "qty total";gap:16px 18px}.cart-line-art{grid-area:art}.cart-line-art img{height:92px}.cart-line-copy{grid-area:copy}.cart-line-qty{grid-area:qty;max-width:110px}.cart-line-total{grid-area:total;align-self:end}.cart-summary{grid-template-columns:1fr;justify-content:stretch}.cart-summary-rows,.cart-summary-note,.cart-summary-actions,.cart-continue{grid-column:1}}
 .shop-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:34px}
 .shop-card{display:flex;flex-direction:column;gap:12px}
 .shop-card-art{display:flex;align-items:center;justify-content:center;min-height:0;height:auto;padding:24px;background:#f5eacb;border:0;border-radius:12px}
@@ -102,3 +106,4 @@
 .shop-card-title a:hover{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
 .shop-card-price{font-size:.9375rem;color:#44526a;margin:0}
 .shop-card .button{align-self:flex-start;margin-top:4px}
+@media(max-width:360px){.buy-options{grid-template-columns:1fr}}
