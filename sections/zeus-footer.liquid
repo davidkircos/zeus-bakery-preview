@@ -1,5 +1,5 @@
 {% assign planet_url = settings.planet_page.url | default: '/pages/pita-for-the-planet' %}
-  <footer class="site-footer"><div class="footer-top"><div class="footer-brand"><a href="{{ routes.root_url }}" class="footer-wordmark" aria-label="Zeus Bakery home">ZEUS BAKERY</a><p>Greek roots. Good company. Great chips.</p></div></div><div class="footer-bottom"><p>© {{ 'now' | date: '%Y' }} Northwood Mountain Provisions LLC</p><span>BAKED WITH LOVE IN COLORADO</span><a href="{{ planet_url }}">Pita for the Planet 2027 · Coming soon ↗</a>{% if shop.privacy_policy != blank %}<a href="{{ shop.privacy_policy.url }}">Privacy</a>{% endif %}<a href="#main">Back to top ↑</a></div></footer>
+  <footer class="site-footer"><div class="footer-top"><div class="footer-brand"><a href="{{ routes.root_url }}" class="footer-wordmark" aria-label="Zeus Bakery home">ZEUS BAKERY</a><p>Greek roots.<br>Good company.<br>Great chips.</p></div></div><div class="footer-bottom"><p>© {{ 'now' | date: '%Y' }} Northwood Mountain Provisions LLC</p><span>BAKED WITH LOVE IN COLORADO</span><a href="{{ planet_url }}">Pita for the Planet 2027 · Coming soon ↗</a>{% if shop.privacy_policy != blank %}<a href="{{ shop.privacy_policy.url }}">Privacy</a>{% endif %}<a href="#main">Back to top ↑</a></div></footer>
 {% schema %}
 {
   "name": "Zeus footer",
