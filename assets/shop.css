@@ -14,8 +14,10 @@
 .buy-title{font-family:var(--serif);font-weight:600;letter-spacing:-.055em;line-height:1.02;font-size:clamp(3rem,5.6vw,5.2rem);margin:18px 0 20px;white-space:normal}
 .buy-title em{position:relative;white-space:nowrap}
 .buy-title em:after{content:'';position:absolute;bottom:-5px;left:2%;height:5px;width:95%;background:var(--gold);border-radius:50%;transform:rotate(-3deg);z-index:-1}
+.buy-description{margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}
 .buy-description p{font-size:1rem;line-height:1.8;color:#44526a;margin:0 0 14px;max-width:520px}
-.buy-copy .product-tags{margin:22px 0 30px}
+.buy-description p:last-child{margin-bottom:0}
+.buy-copy .product-tags{margin:4px 0 30px}
 .buy-form{margin-top:4px}
 .buy-options{margin:0 0 26px;padding:0;border:0;min-width:0}
 .buy-options legend{display:flex;align-items:center;gap:12px;padding:0;margin-bottom:14px;font-family:var(--serif);font-size:1.4rem;font-weight:600;letter-spacing:-.03em;line-height:1.2}
@@ -56,7 +58,6 @@
 .buy-coming-soon .button:hover{background:#fff}
 .buy-coming-soon .text-link{color:var(--gold)}
 .buy-coming-soon .text-link:hover{color:var(--cream)}
-.buy-copy .pairing{margin-top:34px}
 .buy-details{margin-top:60px;padding-top:10px}
 .buy-details .nutrition{max-width:960px}
 .buy-details .nutrition-panel{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:48px}

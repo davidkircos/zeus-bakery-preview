@@ -20,7 +20,6 @@
     assign art_class = 'product-art-herbs'
     assign fallback_image = 'zeus-greek-garden-herbs.webp' | asset_url
     assign fallback_alt = 'Greek Garden Herbs sourdough pita crisps, 5.7 ounce (162 gram) bag'
-    assign pairing = 'Tzatziki, whipped feta &amp; good company.'
     assign fallback_copy = '<p>Our family sourdough, with a little more Greek flavor. Heritage Colorado grains, extra virgin olive oil, sea salt, and Greek herbs come together in a crisp with deep sourdough flavor.</p><p>Fermented for 24 hours and hand-baked in Colorado. Bring a bag to the mezze table, pair with your favorite dip, or enjoy every last herby crunch on its own.</p>'
   else
     assign eyebrow = 'OUR SIGNATURE FLAVOR'
@@ -29,7 +28,6 @@
     assign art_class = ''
     assign fallback_image = 'zeus-aegean-sea-salt.webp' | asset_url
     assign fallback_alt = 'Aegean Sea Salt sourdough pita crisps, 5.7 ounce (162 gram) bag'
-    assign pairing = 'Hummus, mezze &amp; “just one more.”'
     assign fallback_copy = '<p>Good sourdough takes time. Ours starts with our 50+ year-old family starter and ferments for 24 hours before we bake it to a golden, satisfying crunch.</p><p>A little tangy. Perfectly salty. Made with heritage Colorado grains, extra virgin olive oil, and sea salt. Ready for your favorite dip—or straight out of the bag.</p>'
   endif
   if coming_soon
@@ -56,7 +54,6 @@
       <p class="eyebrow">{{ eyebrow }}</p>
       <h1 id="buy-heading" class="buy-title">{% if use_mapped_title %}{{ title_line }}<br><em>{{ title_accent }}</em>{% else %}{{ product.title | escape }}{% endif %}</h1>
       <p class="product-type">SOURDOUGH PITA CRISPS · 5.7 OZ (162 G) PER BAG</p>
-      <div class="buy-description">{% if product.description != blank %}{{ product.description }}{% else %}{{ fallback_copy }}{% endif %}</div>
       <div class="product-tags"><span>Vegan</span><span>Seed oil free</span><span>Hand-baked</span></div>
 
       {%- if coming_soon -%}
@@ -171,7 +168,7 @@
         {%- endform -%}
       {%- endif -%}
 
-      <p class="pairing"><span>THE PERFECT PLUS-ONE FOR</span> {{ pairing }}</p>
+      <div class="buy-description">{% if product.description != blank %}{{ product.description }}{% else %}{{ fallback_copy }}{% endif %}</div>
     </div>
   </div>
   <div class="buy-details">
