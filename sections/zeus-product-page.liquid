@@ -132,8 +132,8 @@
                   <label class="buy-option buy-option-plan">
                     <input type="radio" name="purchase_option" value="{{ plan.id }}"{% if product.requires_selling_plan and forloop.first and forloop.parentloop.first %} checked{% endif %}>
                     <span class="buy-option-body">
-                      <span class="buy-option-title">{{ plan.name | escape }}{% if plan_save != '' %} <b class="buy-save">{{ plan_save }}</b>{% endif %}</span>
-                      <span class="buy-option-meta">{% if plan.description != blank %}{{ plan.description | escape }}{% else %}{% for option in plan.options %}{{ option.name | escape }} {{ option.value | escape }}{% unless forloop.last %} · {% endunless %}{% endfor %}{% endif %} · Cancel anytime.</span>
+                      <span class="buy-option-title">{% if group.selling_plans.size == 1 %}{{ group.name | escape }}{% else %}{{ plan.name | escape }}{% endif %}{% if plan_save != '' %} <b class="buy-save">{{ plan_save }}</b>{% endif %}</span>
+                      <span class="buy-option-meta">{% if plan.description != blank %}{{ plan.description | escape }}{% else %}{% for option in plan.options %}{{ option.value | escape }}{% unless forloop.last %} · {% endunless %}{% endfor %}{% endif %} · Cancel anytime.</span>
                     </span>
                   </label>
                 {%- endfor -%}
