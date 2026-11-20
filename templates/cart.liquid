@@ -1,12 +1,19 @@
 {%- assign sea_salt = settings.product_sea_salt | default: all_products['aegean-sea-salt'] -%}
+{%- assign herbs = settings.product_herbs | default: all_products['greek-garden-herbs'] -%}
+{%- liquid
+  assign shop_all = false
+  if sea_salt != blank and sea_salt.available and herbs != blank and herbs.available
+    assign shop_all = true
+  endif
+-%}
 <section class="section-wrap cart-page" aria-labelledby="cart-heading">
   <p class="eyebrow">YOUR BOX</p>
   <h1 id="cart-heading">Your <em>cart.</em></h1>
   {%- if cart.item_count == 0 -%}
     <div class="cart-empty">
-      <p>Nothing in here yet. A box of Aegean Sea Salt fixes that.</p>
+      <p>Nothing in here yet. A box of pita crisps fixes that.</p>
       <div class="hero-actions">
-        {%- if sea_salt != blank -%}<a class="button" href="{{ sea_salt.url }}">Shop Aegean Sea Salt <span aria-hidden="true">↗</span></a>{%- else -%}<a class="button" href="{{ routes.root_url }}#chips">Meet the chips <span aria-hidden="true">↗</span></a>{%- endif -%}
+        {%- if shop_all -%}<a class="button" href="{{ routes.all_products_collection_url }}">Shop our chips <span aria-hidden="true">↗</span></a>{%- elsif sea_salt != blank -%}<a class="button" href="{{ sea_salt.url }}">Shop Aegean Sea Salt <span aria-hidden="true">↗</span></a>{%- else -%}<a class="button" href="{{ routes.root_url }}#chips">Meet the chips <span aria-hidden="true">↗</span></a>{%- endif -%}
         <a class="text-link" href="{{ routes.root_url }}#find">Find Zeus near you</a>
       </div>
     </div>
@@ -54,7 +61,7 @@
           <button type="submit" class="button" name="checkout">Check out <span aria-hidden="true">↗</span></button>
           <button type="submit" class="button button-outline" name="update">Update cart</button>
         </div>
-        {%- if sea_salt != blank -%}<a class="text-link cart-continue" href="{{ sea_salt.url }}">Keep shopping</a>{%- endif -%}
+        {%- if shop_all -%}<a class="text-link cart-continue" href="{{ routes.all_products_collection_url }}">Keep shopping</a>{%- elsif sea_salt != blank -%}<a class="text-link cart-continue" href="{{ sea_salt.url }}">Keep shopping</a>{%- endif -%}
       </div>
     </form>
   {%- endif -%}

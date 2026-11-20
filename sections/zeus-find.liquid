@@ -1,16 +1,86 @@
 {% assign zeus_logo_url = 'zeus-logo.webp' | asset_url %}{% if settings.logo != blank %}{% assign zeus_logo_url = settings.logo | image_url: width: 360 %}{% endif %}
+{%- assign store_count = section.blocks.size -%}
     <section class="find-section" id="find" aria-labelledby="find-heading">
-      <div class="section-wrap find-inner"><div class="find-lead find-copy"><p class="eyebrow">FROM OUR BAKERY TO YOUR NEIGHBORHOOD.</p><h2 id="find-heading">Go on.<br><em>Find Zeus.</em></h2></div><aside class="find-soon"><p class="find-soon-kicker"><span aria-hidden="true">✦</span> Coming soon</p><p class="find-soon-title">Good things are in store.</p><p class="find-soon-detail">{{ section.settings.description | escape }}</p></aside><div class="find-follow"><div class="find-mini-brand"><img src="{{ zeus_logo_url }}" alt="" width="112" height="112" loading="lazy"><span>Local legend.</span></div><a class="find-wholesale" href="{{ routes.root_url }}#contact">Want Zeus on your shelves? Get in touch ↗</a></div></div>
+      <div class="section-wrap find-inner{% if store_count > 0 %} has-stores{% endif %}"><div class="find-lead find-copy"><p class="eyebrow">FROM OUR BAKERY TO YOUR NEIGHBORHOOD.</p><h2 id="find-heading">Go on.<br><em>Find Zeus.</em></h2>{% if store_count > 0 %}{% if section.settings.description != blank %}<p class="find-intro">{{ section.settings.description | escape }}</p>{% endif %}{% if section.settings.note != blank %}<p class="availability-note">{{ section.settings.note | escape }}</p>{% endif %}{% endif %}</div>
+      {%- if store_count > 0 -%}
+        <div class="store-directory find-stores"><div class="store-directory-heading"><h3>Our stores</h3><span>{{ store_count }} LOCATION{% if store_count != 1 %}S{% endif %}</span></div><ul>
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign map_query = block.settings.name | append: ', ' | append: block.settings.address | append: ', ' | append: block.settings.city
+              assign map_url = block.settings.map_url
+              if map_url == blank
+                assign map_query_encoded = map_query | url_encode
+                assign map_url = 'https://www.google.com/maps/search/?api=1&query=' | append: map_query_encoded
+              endif
+              assign site_label = block.settings.url | remove_first: 'https://' | remove_first: 'http://' | remove_first: 'www.' | split: '/' | join: '/'
+            -%}
+            <li class="store-row" {{ block.shopify_attributes }}><div>{% if block.settings.region != blank %}<span class="store-region">{{ block.settings.region | escape }}</span>{% endif %}<h3>{% if block.settings.url != blank %}<a href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer">{{ block.settings.name | escape }}</a>{% else %}{{ block.settings.name | escape }}{% endif %}</h3><p>{{ block.settings.address | escape }}<br>{{ block.settings.city | escape }}</p>{% if block.settings.url != blank %}<a class="store-link" href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer">{{ site_label | escape }} <span aria-hidden="true">↗</span></a>{% endif %}</div><a class="directions" href="{{ map_url }}" target="_blank" rel="noopener noreferrer" aria-label="Directions to {{ block.settings.name | escape }}">→</a></li>
+          {%- endfor -%}
+        </ul></div>
+      {%- else -%}
+        <aside class="find-soon"><p class="find-soon-kicker"><span aria-hidden="true">✦</span> Coming soon</p><p class="find-soon-title">Good things are in store.</p><p class="find-soon-detail">{{ section.settings.description | escape }}</p></aside>
+      {%- endif -%}
+      <div class="find-follow"><div class="find-mini-brand"><img src="{{ zeus_logo_url }}" alt="" width="112" height="112" loading="lazy"><span>Local legend.</span></div><a class="find-wholesale" href="{{ routes.root_url }}#contact">Want Zeus on your shelves? Get in touch ↗</a></div></div>
     </section>
 {% schema %}
 {
   "name": "Find Zeus",
   "settings": [
     {
+      "type": "paragraph",
+      "content": "Add a Store block for every shop that carries Zeus. With no stores, the section shows a “Coming soon” card using the intro text."
+    },
+    {
       "type": "textarea",
       "id": "description",
       "label": "Intro",
-      "default": "A local Colorado market near you."
+      "default": "Good things are in store. Find Zeus at these independent markets."
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Availability note",
+      "default": "Selection varies by store. Call ahead to make sure Zeus is on the shelf before you go."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "Store",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Store name"
+        },
+        {
+          "type": "text",
+          "id": "region",
+          "label": "Region label",
+          "info": "Shown above the name, e.g. Boulder, Colorado"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": "Street address"
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City, state and ZIP"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Website"
+        },
+        {
+          "type": "url",
+          "id": "map_url",
+          "label": "Directions link",
+          "info": "Optional. Defaults to a Google Maps search for the address."
+        }
+      ]
     }
   ],
   "limit": 1,

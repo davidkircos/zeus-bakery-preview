@@ -20,8 +20,61 @@
     },
     "find": {
       "type": "zeus-find",
+      "blocks": {
+        "cheese-importers": {
+          "type": "store",
+          "settings": {
+            "name": "Cheese Importers",
+            "region": "Longmont, Colorado",
+            "address": "103 Main St",
+            "city": "Longmont, CO 80501",
+            "url": "https://cheeseimporters.com/",
+            "map_url": ""
+          }
+        },
+        "luckys-market": {
+          "type": "store",
+          "settings": {
+            "name": "Lucky’s Market",
+            "region": "Boulder, Colorado",
+            "address": "3960 Broadway #104",
+            "city": "Boulder, CO 80304",
+            "url": "https://www.luckysmarket.com/",
+            "map_url": ""
+          }
+        },
+        "destefanos-market": {
+          "type": "store",
+          "settings": {
+            "name": "DeStefano’s Market",
+            "region": "Portsmouth, New Hampshire",
+            "address": "517 Middle Street",
+            "city": "Portsmouth, NH 03801",
+            "url": "https://destefanosmarket.com/",
+            "map_url": ""
+          }
+        },
+        "whitemarsh-pharmacy": {
+          "type": "store",
+          "settings": {
+            "name": "Whitemarsh Boutique & Pharmacy",
+            "region": "Lafayette Hill, Pennsylvania",
+            "address": "553 Germantown Pike",
+            "city": "Lafayette Hill, PA 19444",
+            "url": "https://www.facebook.com/WhitemarshRX",
+            "map_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "cheese-importers",
+        "luckys-market",
+        "destefanos-market",
+        "whitemarsh-pharmacy"
+      ],
       "settings": {
-        "description": "A local Colorado market near you."
+        "description": "Good things are in store. Find Zeus at these independent markets in Colorado, New Hampshire and Pennsylvania.",
+        "note": "Selection varies by store. Call ahead to make sure Zeus is on the shelf before you go."
       }
     },
     "contact": {

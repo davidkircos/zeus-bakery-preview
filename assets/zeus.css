@@ -86,3 +86,19 @@
 .product-price{font-size:.875rem;line-height:1.6;color:#44526a}
 .product-price b{color:var(--ink);font-size:1rem}
 @media(max-width:760px){.nutrition{max-width:none}.nutrition-panel{grid-template-columns:1fr;gap:20px}.nutrition-facts{max-width:320px}}
+.find-inner.has-stores{grid-template-columns:minmax(0,.95fr) minmax(320px,1.05fr);grid-template-areas:"lead stores" "follow stores";align-items:start;column-gap:8%}
+.find-stores{grid-area:stores;padding-top:10px}
+.find-copy .find-intro{margin-top:-2px}
+.store-row{align-items:flex-start}
+.store-row:last-child{border-bottom:0}
+.store-row>div{min-width:0}
+.store-region{font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.store-row h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin:0 0 8px}
+.store-row h3 a{text-decoration:none}
+.store-row h3 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.store-row p{margin:0}
+.store-link{display:inline-block;margin-top:10px;font-size:.8125rem;line-height:1.5;color:#efc659;text-decoration:none;border-bottom:1px solid rgba(239,198,89,.45);transition:color .2s,border-color .2s}
+.store-link:hover{color:var(--cream);border-color:var(--cream)}
+.store-link span{font-size:.75rem}
+.directions{margin-top:22px}
+@media(max-width:760px){.find-inner.has-stores{grid-template-columns:1fr;grid-template-areas:"lead" "stores" "follow";row-gap:34px}.find-stores{padding-top:0}.store-row h3{font-size:1.3rem}.directions{margin-top:18px}}

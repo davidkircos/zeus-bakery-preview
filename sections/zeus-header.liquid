@@ -1,6 +1,7 @@
 {% assign zeus_logo_url = 'zeus-logo.webp' | asset_url %}{% if settings.logo != blank %}{% assign zeus_logo_url = settings.logo | image_url: width: 360 %}{% endif %}
 {% assign shop_product = settings.product_sea_salt | default: all_products['aegean-sea-salt'] %}
-{% assign shop_url = routes.root_url | append: '#chips' %}{% if shop_product != blank and shop_product.available %}{% assign shop_url = shop_product.url %}{% endif %}
+{% assign herbs_product = settings.product_herbs | default: all_products['greek-garden-herbs'] %}
+{% assign shop_url = routes.root_url | append: '#chips' %}{% if shop_product != blank and shop_product.available %}{% assign shop_url = shop_product.url %}{% if herbs_product != blank and herbs_product.available %}{% unless herbs_product.tags contains 'coming-soon' %}{% assign shop_url = routes.all_products_collection_url %}{% endunless %}{% endif %}{% endif %}
   <div class="announcement">{{ section.settings.announcement | escape }}</div>
   <header class="site-header">
     <a class="brand" href="{{ routes.root_url }}" aria-label="Zeus Bakery home"><img src="{{ zeus_logo_url }}" width="74" height="74" alt=""><span>ZEUS<span class="brand-small">BAKERY</span></span></a>
